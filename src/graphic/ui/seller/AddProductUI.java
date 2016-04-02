@@ -8,7 +8,6 @@ import javax.swing.JTextField;
 
 import graphic.engine.AbstractUI;
 import graphic.engine.UIMessage;
-import logic.facade.FacadeProduct;
                                                        
 public class AddProductUI extends AbstractUI{
 	private JTextField name;
@@ -23,7 +22,7 @@ public class AddProductUI extends AbstractUI{
 	 private JLabel label4;
 	 JButton cancel = new JButton();
 	 JButton addP = new JButton();
-	 private FacadeProduct facade =  new FacadeProduct((int)this.communication.getElement("id_seller"));
+	 
 	 public AddProductUI(UIMessage communication){
 		super(communication);
 			//this.nameShop.setPreferredSize(new Dimension(150, 30));

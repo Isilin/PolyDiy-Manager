@@ -9,7 +9,6 @@ import javax.swing.JTable;
 public class ButtonEditor extends DefaultCellEditor {
 	private static final long serialVersionUID = 1L;
 	protected JButton button;
-	private boolean isPushed;
 	private ButtonListener bListener = new ButtonListener();
 
 	public ButtonEditor(JCheckBox checkBox) {

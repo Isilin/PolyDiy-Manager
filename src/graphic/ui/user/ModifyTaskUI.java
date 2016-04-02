@@ -48,13 +48,17 @@ public class ModifyTaskUI extends AbstractUI {
 	public void actionPerformed(ActionEvent arg0) {
 		if(arg0.getActionCommand().equals("Update")) {
 			try {
-				this.facade.updateTask();
+				this.facade.updateTask(this.title.getText(), this.category.getText(), (int)this.communication.getElement("id_user"));
+				this.setChanged();
+				this.notifyObservers("activityPanel");
 			} catch (Exception e1) {
 				e1.printStackTrace();
 			}
 		} else if(arg0.getActionCommand().equals("Delete")) {
 			try {
 				this.facade.deleteTask();
+				this.setChanged();
+				this.notifyObservers("activityPanel");
 			} catch (Exception e1) {
 				e1.printStackTrace();
 			}

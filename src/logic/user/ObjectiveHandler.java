@@ -44,7 +44,14 @@ public class ObjectiveHandler {
 		return factory.buildCategoryById(this.objective.getIdCategory());
 	}
 
-	public void updateObjective() throws Exception {
+	public void updateObjective(String title,String description, String deadline,
+								String category, int idUser) throws Exception {
+		this.objective.setTitle(title);
+		this.objective.setDescription(description);
+		this.objective.setDeadline(deadline);
+		this.objective.setFacultativIdActivity(1); // TODO a changer
+		this.objective.setIdCategory(1); // TODO a changer
+		this.objective.setIdUser(idUser);
 		if(this.objective.getIdObjective() == -1) {
 			this.objective.insert();
 		} else {

@@ -74,7 +74,7 @@ public class JDBCObjective extends Objective {
 	@Override
 	public void insert() throws Exception {
 		if (!this.isExisting()) {
-			this.component.insert("task(title, description, deadline, facultativ_id_activity, id_category, id_user)", 
+			this.component.insert("objective(title, description, deadline, facultativ_id_activity, id_category, id_user)", 
 									"'" + this.title + "', '" + this.description + "','" + this.deadline + "','" 
 									+ this.facultativIdActivity + "', '" + this.idCategory + "','" + this.idUser + "'");
 		} else {

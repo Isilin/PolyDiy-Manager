@@ -51,7 +51,7 @@ public class ActivityHandler {
 		this.activity.setTitle(title);
 		this.activity.setDescription(description);
 		this.activity.setDeadline(deadline);
-		this.activity.setIdActivityCategory(idActivityCategory);
+		this.activity.setIdActivityCategory(1); // TODO à changer
 		this.activity.setIdUser(idUser);
 		if(this.activity.getIdActivity() == -1) {
 			this.activity.insert();

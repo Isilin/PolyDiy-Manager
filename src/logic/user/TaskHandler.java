@@ -44,7 +44,11 @@ public class TaskHandler {
 		return factory.buildCategoryById(this.task.getIdCategory());
 	}
 
-	public void updateTask() throws Exception {
+	public void updateTask(String title, String category, int idUser) throws Exception {
+		this.task.setIdCategory(1); // TODO a changer
+		this.task.setIdActivity(1); // TODO a changer
+		this.task.setIdUser(idUser);
+		this.task.setTitle(title);
 		if(this.task.getIdTask() == -1) {
 			this.task.insert();
 		} else {

@@ -9,6 +9,7 @@ package persistent.jdbc;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.Arrays;
 import java.util.List;
 
 import common.exception.AlertDriver;
@@ -17,6 +18,7 @@ import common.exception.ErrorConnectionException;
 import common.exception.NotExistingTuple;
 import common.exception.UnknownIDSellerException;
 import common.jdbc.JDBCComponent;
+import common.jdbc.SQLCondition;
 import persistent.abstractclass.Seller;
 
 
@@ -85,7 +87,7 @@ public class JDBCSeller extends Seller{
 	@Override
 	public void insert() throws Exception {
 		if(!this.isExisting()) {
-			this.component.insert("Seller_account(id_account,nameshop,siret,website,description)", "'" + this.IDaccount + "', '" + this.nameShop + "', '"  + this.description + "', '"  + this.siret + "', '"  + this.website + "'");
+			this.component.insert("Seller_account(nameshop,siret,website,description,id_account)", "'" + this.nameShop + "', '"  + this.description + "', '"  + this.siret + "', '"  + this.website + "', '" + this.IDaccount + "'");
 		} else {
 			throw new AlreadyExistTuple("Seller");
 		}
@@ -114,20 +116,14 @@ public class JDBCSeller extends Seller{
 		// TODO Auto-generated method stub
 
 	}
+
 	@Override
 	public void delete() throws Exception {
-		// TODO Auto-generated method stub
-
-	}
-
-	/*@Override
-	public void delete() throws Exception {
 		if(this.isExisting()) {
-			this.component.delete("Session", "ID=" + this.ID);
+			this.component.delete("Seller_account", new SQLCondition(Arrays.asList("id_seller"),
+																	Arrays.asList(Integer.toString(this.ID))));
 		} else {
-			throw new NotExistingTuple("Session");
+			throw new NotExistingTuple("Seller_account");
 		}
-	}*/
-
-
+	}
 }

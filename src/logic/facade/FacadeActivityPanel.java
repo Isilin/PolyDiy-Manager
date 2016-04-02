@@ -58,8 +58,8 @@ public class FacadeActivityPanel {
 		this.taskHandler.loadTasks(idUser);
 	}
 	
-	public void updateTask() throws Exception {
-		this.taskHandler.updateTask();
+	public void updateTask(String title, String category, int idUser) throws Exception {
+		this.taskHandler.updateTask(title, category, idUser);
 	}
 	
 	public void deleteTask() throws Exception {
@@ -94,8 +94,9 @@ public class FacadeActivityPanel {
 		this.objectiveHandler.loadObjective(idObjective);
 	}
 	
-	public void updateObjective() throws Exception {
-		this.objectiveHandler.updateObjective();
+	public void updateObjective(String title,String description, String deadline,
+			String category, int idUser) throws Exception {
+		this.objectiveHandler.updateObjective(title, description, deadline, category, idUser);
 	}
 	
 	public void deleteObjective() throws Exception {
