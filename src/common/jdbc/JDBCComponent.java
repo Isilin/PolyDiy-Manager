@@ -152,26 +152,6 @@ public ResultSet select(String selectionIn, String objectIn, String conditionIn)
 			e.printStackTrace();
 		}
 	}
-	
-	/**
-	 * Out of date version
-	 * @param newValueIn
-	 * @param objectIn
-	 * @param conditionIn
-	 */
-	public void update(String newValueIn, String objectIn, String conditionIn) {
-		String query = "UPDATE " + objectIn + " SET " + newValueIn;
-		if(conditionIn != "") {
-			System.out.println(query);
-			query += " WHERE " + conditionIn; 
-		}
-		query += ";";
-		try {
-			this.stmt.execute(query);
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-	}
 
 	/**
 	 * 
