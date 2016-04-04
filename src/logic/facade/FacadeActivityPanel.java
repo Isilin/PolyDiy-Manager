@@ -2,8 +2,8 @@ package logic.facade;
 
 import java.util.Collection;
 
-import common.exception.AlertDriver;
-import common.exception.ErrorConnectionException;
+import common.exception.dev.AlertDriver;
+import common.exception.dev.ErrorConnectionException;
 import logic.user.ActivityHandler;
 import logic.user.ObjectiveHandler;
 import logic.user.TaskHandler;

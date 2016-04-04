@@ -2,8 +2,8 @@ package logic.user.list;
 
 import java.util.Set;
 
-import common.exception.AlertDriver;
-import common.exception.ErrorConnectionException;
+import common.exception.dev.AlertDriver;
+import common.exception.dev.ErrorConnectionException;
 import persistent.abstractclass.Product;
 import persistent.abstractclass.SetProduct;
 import persistent.factory.ListFactory;

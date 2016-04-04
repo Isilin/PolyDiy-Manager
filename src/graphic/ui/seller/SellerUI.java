@@ -12,9 +12,9 @@ import javax.swing.JOptionPane;
  * @since 2016-03-21
  */
 
-import common.exception.AlertDriver;
-import common.exception.ErrorConnectionException;
 import common.exception.UnknownIDSellerException;
+import common.exception.dev.AlertDriver;
+import common.exception.dev.ErrorConnectionException;
 import graphic.engine.AbstractUI;
 import graphic.engine.UIMessage;
 import logic.facade.FacadeEditProfil;

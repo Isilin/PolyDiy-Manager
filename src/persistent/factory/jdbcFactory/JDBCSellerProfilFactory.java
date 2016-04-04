@@ -5,9 +5,9 @@ package persistent.factory.jdbcFactory;
  * @since 2016-03-21
  */
 
-import common.exception.AlertDriver;
-import common.exception.ErrorConnectionException;
 import common.exception.UnknownIDSellerException;
+import common.exception.dev.AlertDriver;
+import common.exception.dev.ErrorConnectionException;
 import persistent.abstractclass.Seller;
 import persistent.abstractclass.User;
 import persistent.factory.SellerProfilFactory;

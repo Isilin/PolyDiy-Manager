@@ -4,11 +4,11 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
 
-import common.exception.AlertDriver;
-import common.exception.AlreadyExistTuple;
-import common.exception.ErrorConnectionException;
-import common.exception.NotExistingTuple;
 import common.exception.UnknownIDProductException;
+import common.exception.dev.AlertDriver;
+import common.exception.dev.AlreadyExistTuple;
+import common.exception.dev.ErrorConnectionException;
+import common.exception.dev.NotExistingTuple;
 import common.jdbc.JDBCComponent;
 import persistent.abstractclass.list.ProductWishList;
 

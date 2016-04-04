@@ -3,9 +3,9 @@ package persistent.jdbc;
 import java.sql.ResultSet;
 import java.util.List;
 
-import common.exception.AlertDriver;
-import common.exception.AlreadyExistTuple;
-import common.exception.ErrorConnectionException;
+import common.exception.dev.AlertDriver;
+import common.exception.dev.AlreadyExistTuple;
+import common.exception.dev.ErrorConnectionException;
 import common.jdbc.JDBCComponent;
 import persistent.abstractclass.User;
 

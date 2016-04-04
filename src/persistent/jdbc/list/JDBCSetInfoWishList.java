@@ -3,8 +3,8 @@ package persistent.jdbc.list;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-import common.exception.AlertDriver;
-import common.exception.ErrorConnectionException;
+import common.exception.dev.AlertDriver;
+import common.exception.dev.ErrorConnectionException;
 import common.jdbc.JDBCComponent;
 import persistent.abstractclass.list.SetInfoWishList;
 import persistent.abstractclass.list.WishListInfo;

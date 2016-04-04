@@ -1,4 +1,4 @@
-package common.exception;
+package common.exception.dev;
 
 /**
  * This exception is thrown when connection to the database is impossible.
@@ -15,6 +15,7 @@ public class ErrorConnectionException extends Exception {
 	 */
 	@Override
 	public String getMessage() {
-		return "Error : connection to DataBase impossible.";
+		String message = "Error : connection to DataBase impossible.";
+		return message;
 	}
 }

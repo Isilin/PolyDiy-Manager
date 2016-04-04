@@ -2,10 +2,10 @@ package logic.user.list;
 
 import java.util.Set;
 
-import common.exception.AlertDriver;
-import common.exception.AlreadyExistTuple;
-import common.exception.ErrorConnectionException;
 import common.exception.WishListAlreadyExistException;
+import common.exception.dev.AlertDriver;
+import common.exception.dev.AlreadyExistTuple;
+import common.exception.dev.ErrorConnectionException;
 import persistent.abstractclass.list.SetWishList;
 import persistent.abstractclass.list.WishList;
 import persistent.factory.ListFactory;

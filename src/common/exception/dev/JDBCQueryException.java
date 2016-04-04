@@ -1,4 +1,4 @@
-package common.exception;
+package common.exception.dev;
 
 /**
  * Throw this exception if the syntax of the query is incorrect.
@@ -20,6 +20,7 @@ public class JDBCQueryException extends Exception {
 	 * @see java.lang.Throwable#getMessage()
 	 */
 	public String getMessage() {
-		return "The query's syntaxe is incorrect : \"" + this.query + "\".";
+		String message = "The query's syntaxe is incorrect : \"" + this.query + "\".";
+		return message;
 	}
 }

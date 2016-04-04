@@ -5,9 +5,9 @@ package logic.seller;
  * @since 2016-03-21
  */
 
-import common.exception.AlertDriver;
-import common.exception.ErrorConnectionException;
 import common.exception.UnknownIDSellerException;
+import common.exception.dev.AlertDriver;
+import common.exception.dev.ErrorConnectionException;
 import persistent.abstractclass.Seller;
 import persistent.factory.SellerProfilFactory;
 import persistent.factory.jdbcFactory.JDBCSellerProfilFactory;

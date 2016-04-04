@@ -1,4 +1,4 @@
-package common.exception;
+package common.exception.dev;
 
 /**
  * Throw this exception if a copy of a tuple is already registered.
@@ -21,6 +21,7 @@ public class AlreadyExistTuple extends Exception {
 	 */
 	@Override
 	public String getMessage() {
-		return "Tuple of type " + this.className + " already exists.";
+		String message = "Tuple of type " + this.className + " already exists.";
+		return message;
 	}
 }

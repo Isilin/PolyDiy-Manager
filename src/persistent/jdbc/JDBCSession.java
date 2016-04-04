@@ -6,12 +6,12 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.UUID;
 
-import common.exception.AlertDriver;
-import common.exception.AlreadyExistTuple;
-import common.exception.ErrorConnectionException;
-import common.exception.NotExistingTuple;
-import common.exception.NotUniqueAttribute;
 import common.exception.SessionErrorException;
+import common.exception.dev.AlertDriver;
+import common.exception.dev.AlreadyExistTuple;
+import common.exception.dev.ErrorConnectionException;
+import common.exception.dev.NotExistingTuple;
+import common.exception.dev.NotUniqueAttribute;
 import common.jdbc.JDBCComponent;
 import common.jdbc.SQLCondition;
 import persistent.abstractclass.Session;

@@ -1,4 +1,4 @@
-package common.exception;
+package common.exception.dev;
 
 import java.util.List;
 
@@ -40,6 +40,7 @@ public class NotUniqueAttribute extends Exception {
 	 */
 	@Override
 	public String getMessage() {
-		return "The attributes " + this.attributes + " are not unique for " + this.component + ".";
+		String message = "The attributes " + this.attributes + " are not unique for " + this.component + ".";
+		return message;
 	}
 }

@@ -5,12 +5,12 @@ import java.sql.SQLException;
 import java.util.Iterator;
 import java.util.List;
 
-import common.exception.AlertDriver;
-import common.exception.AlreadyExistTuple;
-import common.exception.ErrorConnectionException;
 import common.exception.UnknownIDProductException;
 import common.exception.NeedHaveBothIDUserAndLabelException;
 import common.exception.WishListAlreadyExistException;
+import common.exception.dev.AlertDriver;
+import common.exception.dev.AlreadyExistTuple;
+import common.exception.dev.ErrorConnectionException;
 import common.jdbc.JDBCComponent;
 import persistent.abstractclass.list.WishList;
 import persistent.factory.ProductFactory;

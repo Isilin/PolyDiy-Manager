@@ -10,7 +10,7 @@ import java.util.Observer;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
-import common.exception.ErrorConnectionException;
+import common.exception.dev.ErrorConnectionException;
 import graphic.engine.AbstractUI;
 import graphic.engine.FactoryUI;
 import graphic.engine.UIMessage;

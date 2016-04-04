@@ -24,7 +24,7 @@ public abstract class Account implements InterfaceModel {
 	protected int ID = -1;
 	protected String email = "";
 	protected String[] name = new String[2];
-	protected Address address = null;
+	protected Address address = new Address();
 	
 	protected int[] profilesID = new int[3];
 	protected List<Integer> commentIDs = new ArrayList<Integer>();

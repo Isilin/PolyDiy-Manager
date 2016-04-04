@@ -1,4 +1,4 @@
-package common.exception;
+package common.exception.dev;
 
 /**
  * This exception is throw when no tuple was found for the given class name.
@@ -21,6 +21,7 @@ public class NotExistingTuple extends Exception {
 	 */
 	@Override
 	public String getMessage() {
-		return "The tuple of type " + this.className + " doesn't exist.";
+		String message = "The tuple of type " + this.className + " doesn't exist.";
+		return message;
 	}
 }

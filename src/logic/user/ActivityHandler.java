@@ -2,8 +2,8 @@ package logic.user;
 
 import java.util.Collection;
 
-import common.exception.AlertDriver;
-import common.exception.ErrorConnectionException;
+import common.exception.dev.AlertDriver;
+import common.exception.dev.ErrorConnectionException;
 import persistent.abstractclass.Activity;
 import persistent.abstractclass.ActivityCategory;
 import persistent.abstractclass.list.SetActivity;

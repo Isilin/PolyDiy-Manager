@@ -5,9 +5,9 @@ package persistent.factory;
  * @since 2016-03-21
  */
 
-import common.exception.AlertDriver;
-import common.exception.ErrorConnectionException;
 import common.exception.UnknownIDProductException;
+import common.exception.dev.AlertDriver;
+import common.exception.dev.ErrorConnectionException;
 import persistent.abstractclass.Product;
 import persistent.abstractclass.list.ProductWishList;
 

@@ -4,8 +4,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
 
-import common.exception.AlertDriver;
-import common.exception.ErrorConnectionException;
+import common.exception.dev.AlertDriver;
+import common.exception.dev.ErrorConnectionException;
 import common.jdbc.JDBCComponent;
 import persistent.abstractclass.list.SetWishList;
 import persistent.factory.ListFactory;

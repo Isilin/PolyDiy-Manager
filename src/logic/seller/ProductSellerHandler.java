@@ -1,14 +1,9 @@
 package logic.seller;
 import java.util.Set;
 
-/**
- * @author nassim vachor
- * @version 1.0
- * @since 2016-03-30
- */
-import common.exception.AlertDriver;
-import common.exception.ErrorConnectionException;
 import common.exception.UnknownIDProductException;
+import common.exception.dev.AlertDriver;
+import common.exception.dev.ErrorConnectionException;
 import persistent.abstractclass.Product;
 import persistent.abstractclass.SetProduct;
 import persistent.factory.ListFactory;
