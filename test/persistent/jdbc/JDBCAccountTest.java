@@ -1,6 +1,3 @@
-/**
- * 
- */
 package persistent.jdbc;
 
 import static org.junit.Assert.assertEquals;
@@ -147,6 +144,7 @@ public class JDBCAccountTest {
 				this.account.setLogin("yolo");
 				this.account.setPassword("yolo");
 				this.account.insert();
+				this.account.loadFromKeys(Arrays.asList("login"), Arrays.asList("yolo"));
 			}
 			assertTrue(this.account.isExisting());
 			this.account.delete();

@@ -1,9 +1,9 @@
 package persistent.abstractclass;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import common.exception.dev.NotFoundParameter;
+import common.set.ListOfID;
 import persistent.common.Address;
 
 /**
@@ -27,8 +27,8 @@ public abstract class Account implements InterfaceModel {
 	protected Address address = new Address();
 	
 	protected int[] profilesID = new int[3];
-	protected List<Integer> commentIDs = new ArrayList<Integer>();
-	protected List<Integer> tutorialIDs = new ArrayList<Integer>();
+	protected List<Integer> commentIDs = new ListOfID("commentIDs", "Account");
+	protected List<Integer> tutorialIDs = new ListOfID("tutorialIDs", "Account");
 	
 	public Account() {
 		this.name[Account.FIRST] = "";

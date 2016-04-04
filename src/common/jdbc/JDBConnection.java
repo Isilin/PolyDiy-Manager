@@ -94,7 +94,7 @@ public class JDBConnection {
 												ResultSet.HOLD_CURSORS_OVER_COMMIT);
 	}
 	
-	public static Boolean isResult(Statement stmt) throws SQLException {
+	public static Boolean hasResult(Statement stmt) throws SQLException {
 		ResultSet result = stmt.getResultSet();
 		Boolean isResult = false;
 		if(result != null) {

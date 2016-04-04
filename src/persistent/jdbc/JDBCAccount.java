@@ -38,7 +38,7 @@ public class JDBCAccount extends Account {
 		PreparedStatement stmt = this.connection.getPreparedStatement("SELECT id_account FROM Account WHERE id_account=?;");
 		stmt.setInt(1, this.ID);
 		stmt.execute();
-		Boolean hasResult = JDBConnection.isResult(stmt);
+		Boolean hasResult = JDBConnection.hasResult(stmt);
 		stmt.close();
 		return hasResult;
 	}
@@ -48,17 +48,18 @@ public class JDBCAccount extends Account {
 		Boolean hasChanged = false;
 		if(this.isExisting()) {
 			PreparedStatement stmt = this.connection.getPreparedStatement(
-					"SELECT id_account FROM Account WHERE login=? AND password=? AND email=? AND first_name=? AND last_name=? AND road=? AND city=? AND postal_code=?;");
-			stmt.setString(1, this.login);
-			stmt.setString(2, this.password);
-			stmt.setString(3, this.email);
-			stmt.setString(4, this.name[Account.FIRST]);
-			stmt.setString(5, this.name[LAST]);
-			stmt.setString(6, this.address.getRoad());
-			stmt.setString(7, this.address.getCity());
-			stmt.setString(8, this.address.getPostal());
+					"SELECT id_account FROM Account WHERE id_account=? AND login=? AND password=? AND email=? AND first_name=? AND last_name=? AND road=? AND city=? AND postal_code=?;");
+			stmt.setInt(1, this.ID);
+			stmt.setString(2, this.login);
+			stmt.setString(3, this.password);
+			stmt.setString(4, this.email);
+			stmt.setString(5, this.name[Account.FIRST]);
+			stmt.setString(6, this.name[LAST]);
+			stmt.setString(7, this.address.getRoad());
+			stmt.setString(8, this.address.getCity());
+			stmt.setString(9, this.address.getPostal());
 			stmt.execute();
-			Boolean hasResult = JDBConnection.isResult(stmt);
+			Boolean hasResult = JDBConnection.hasResult(stmt);
 			stmt.close();
 			hasChanged =  !hasResult;
 		}
@@ -89,7 +90,7 @@ public class JDBCAccount extends Account {
 		}
 		stmt.execute();
 		
-		if(JDBConnection.isResult(stmt)) {
+		if(JDBConnection.hasResult(stmt)) {
 			ResultSet result = stmt.getResultSet();
 			this.ID = result.getInt("id_account");
 			this.login = result.getString("login");
@@ -108,7 +109,7 @@ public class JDBCAccount extends Account {
 		stmt = this.connection.getPreparedStatement("SELECT id_user FROM User_account WHERE id_account=?");
 		stmt.setInt(1, this.ID);
 		stmt.execute();
-		if(JDBConnection.isResult(stmt)) {
+		if(JDBConnection.hasResult(stmt)) {
 			ResultSet result = stmt.getResultSet();
 			this.profilesID[USER] = result.getInt("id_user");
 		}
@@ -117,7 +118,7 @@ public class JDBCAccount extends Account {
 		stmt = this.connection.getPreparedStatement("SELECT id_seller FROM Seller_account WHERE id_account=?");
 		stmt.setInt(1, this.ID);
 		stmt.execute();
-		if(JDBConnection.isResult(stmt)) {
+		if(JDBConnection.hasResult(stmt)) {
 			ResultSet result = stmt.getResultSet();
 			this.profilesID[SELLER] = result.getInt("id_seller");
 		}
@@ -126,7 +127,7 @@ public class JDBCAccount extends Account {
 		stmt = this.connection.getPreparedStatement("SELECT id_admin FROM Admin_account WHERE id_account=?");
 		stmt.setInt(1, this.ID);
 		stmt.execute();
-		if(JDBConnection.isResult(stmt)) {
+		if(JDBConnection.hasResult(stmt)) {
 			ResultSet result = stmt.getResultSet();
 			this.profilesID[ADMIN] = result.getInt("id_admin");
 		}
@@ -135,7 +136,7 @@ public class JDBCAccount extends Account {
 		stmt = this.connection.getPreparedStatement("SELECT id_comment FROM Comment WHERE id_account=?");
 		stmt.setInt(1, this.ID);
 		stmt.execute();
-		if(JDBConnection.isResult(stmt)) {
+		if(JDBConnection.hasResult(stmt)) {
 			ResultSet result = stmt.getResultSet();
 			do {
 				this.commentIDs.add(result.getInt("id_comment"));
@@ -146,7 +147,7 @@ public class JDBCAccount extends Account {
 		stmt = this.connection.getPreparedStatement("SELECT id_tutorial FROM Tutorial WHERE id_account=?");
 		stmt.setInt(1, this.ID);
 		stmt.execute();
-		if(JDBConnection.isResult(stmt)) {
+		if(JDBConnection.hasResult(stmt)) {
 			ResultSet result = stmt.getResultSet();
 			do {
 				this.tutorialIDs.add(result.getInt("id_tutorial"));
