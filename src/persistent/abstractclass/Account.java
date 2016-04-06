@@ -1,10 +1,9 @@
 package persistent.abstractclass;
 
-import java.util.List;
-
 import common.exception.dev.NotFoundParameter;
 import common.set.ListOfID;
 import persistent.common.Address;
+import persistent.common.InterfaceModel;
 
 /**
  * @author Isilin 
@@ -27,8 +26,8 @@ public abstract class Account implements InterfaceModel {
 	protected Address address = new Address();
 	
 	protected int[] profilesID = new int[3];
-	protected List<Integer> commentIDs = new ListOfID("commentIDs", "Account");
-	protected List<Integer> tutorialIDs = new ListOfID("tutorialIDs", "Account");
+	protected ListOfID commentIDs = new ListOfID("commentIDs", "Account");
+	protected ListOfID tutorialIDs = new ListOfID("tutorialIDs", "Account");
 	
 	public Account() {
 		this.name[Account.FIRST] = "";
@@ -146,14 +145,14 @@ public abstract class Account implements InterfaceModel {
 	/**
 	 * @return List of comment's IDs
 	 */
-	public List<Integer> getCommentIDs() {
+	public ListOfID getCommentIDs() {
 		return this.commentIDs;
 	}
 	
 	/**
 	 * @return List of tutorial's IDs
 	 */
-	public List<Integer> getTutorialIDs() {
+	public ListOfID getTutorialIDs() {
 		return this.tutorialIDs;
 	}
 	
@@ -223,14 +222,14 @@ public abstract class Account implements InterfaceModel {
 	/**
 	 * @param commentIDs the comment's IDs to set
 	 */
-	public void setCommentIDs(List<Integer> commentIDs) {
+	public void setCommentIDs(ListOfID commentIDs) {
 		this.commentIDs = commentIDs;
 	}
 	
 	/**
 	 * @param commentIDs the tutorial's IDs to set
 	 */
-	public void setTutorialIDs(List<Integer> tutorialIDs) {
+	public void setTutorialIDs(ListOfID tutorialIDs) {
 		this.tutorialIDs = tutorialIDs;
 	}
 }

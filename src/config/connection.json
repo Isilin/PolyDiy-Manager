@@ -1,5 +1,5 @@
 {
-	"user": "pzloelfnjglnhj",
-	"password": "O3SE1wvyhy5mG0sHpuPnuQV-fA",
-	"url": "jdbc:postgresql://ec2-107-22-246-250.compute-1.amazonaws.com:5432/dcpgi43j5ks0gi?ssl=true&sslfactory=org.postgresql.ssl.NonValidatingFactory"
+	"user": "fktrbinkmotpxq",
+	"password": "GIWnQFuaYuxTleiGPDIdnY06Ep",
+	"url": "jdbc:postgres://fktrbinkmotpxq:GIWnQFuaYuxTleiGPDIdnY06Ep@ec2-54-225-215-233.compute-1.amazonaws.com:5432/di4coivdccqh9?ssl=true&sslfactory=org.postgresql.ssl.NonValidatingFactory"
 }

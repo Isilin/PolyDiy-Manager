@@ -1,6 +1,7 @@
 package persistent.abstractclass;
 
 import common.exception.dev.ErrorConnectionException;
+import persistent.common.InterfaceModel;
 
 public abstract class Session implements InterfaceModel{
 	protected int ID;

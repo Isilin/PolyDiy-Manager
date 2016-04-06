@@ -1,5 +1,7 @@
 package persistent.abstractclass;
 
+import persistent.common.InterfaceModel;
+
 public abstract class Task implements InterfaceModel {
 	protected int idTask = -1;
 	protected String title = "";

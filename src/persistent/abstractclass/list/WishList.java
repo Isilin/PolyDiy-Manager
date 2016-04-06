@@ -3,7 +3,7 @@ package persistent.abstractclass.list;
 import java.util.Iterator;
 
 import common.set.SetWithKey;
-import persistent.abstractclass.InterfaceModel;
+import persistent.common.InterfaceModel;
 
 /**
  * this class is for a wishlist, extends from SetWithKey<ProductWishList>

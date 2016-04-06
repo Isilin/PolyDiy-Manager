@@ -1,7 +1,7 @@
 package persistent.abstractclass.list;
 
 import common.set.SetWithKey;
-import persistent.abstractclass.InterfaceModel;
+import persistent.common.InterfaceModel;
 
 /**
  * This Class extends from SetWithKey<WishList> 

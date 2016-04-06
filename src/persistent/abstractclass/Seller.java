@@ -1,5 +1,7 @@
 package persistent.abstractclass;
 
+import persistent.common.InterfaceModel;
+
 /**
  * A seller contains ID, nameShop, description, siret and website.
  * A seller is created with his ID.

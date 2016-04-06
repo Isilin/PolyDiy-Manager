@@ -1,8 +1,8 @@
 package persistent.abstractclass.list;
 
 import common.set.SetWithKey;
-import persistent.abstractclass.InterfaceModel;
 import persistent.abstractclass.Objective;
+import persistent.common.InterfaceModel;
 
 /**
  * an aggregate of Objective accessible by keys

@@ -1,6 +1,8 @@
-package persistent.abstractclass;
+package persistent.abstractclass.list;
 
 import common.set.SetWithKey;
+import persistent.abstractclass.Product;
+import persistent.common.InterfaceModel;
 
 /**
  * this is an aggregate of products. 

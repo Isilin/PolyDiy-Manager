@@ -5,7 +5,7 @@ import common.exception.UnknownIDProductException;
 import common.exception.dev.AlertDriver;
 import common.exception.dev.ErrorConnectionException;
 import persistent.abstractclass.Product;
-import persistent.abstractclass.SetProduct;
+import persistent.abstractclass.list.SetProduct;
 import persistent.factory.ListFactory;
 import persistent.factory.ProductFactory;
 import persistent.factory.jdbcFactory.JDBCListFactory;

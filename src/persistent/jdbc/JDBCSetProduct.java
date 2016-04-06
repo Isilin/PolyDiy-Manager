@@ -12,7 +12,7 @@ import java.util.List;
 import common.exception.dev.AlertDriver;
 import common.exception.dev.ErrorConnectionException;
 import common.jdbc.JDBCComponent;
-import persistent.abstractclass.SetProduct;
+import persistent.abstractclass.list.SetProduct;
 import persistent.factory.ProductFactory;
 import persistent.factory.jdbcFactory.JDBCProductFactory;
 

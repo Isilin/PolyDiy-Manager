@@ -1,5 +1,7 @@
 package persistent.abstractclass;
 
+import persistent.common.InterfaceModel;
+
 public abstract class Objective implements InterfaceModel {
 	protected int idObjective = -1;
 	protected String title = "";

@@ -1,5 +1,7 @@
 package persistent.abstractclass;
 
+import persistent.common.InterfaceModel;
+
 public abstract class Category implements InterfaceModel {
 	protected int idCategory = -1;
 	protected String title = "";

@@ -4,7 +4,7 @@ import java.util.Set;
 
 import logic.user.list.PDMShopHandler;
 import persistent.abstractclass.Product;
-import persistent.abstractclass.SetProduct;
+import persistent.abstractclass.list.SetProduct;
 
 public class FacadePDMShop {
 	private PDMShopHandler pdmShopHandler = new PDMShopHandler();

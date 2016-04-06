@@ -1,5 +1,7 @@
 package persistent.abstractclass;
 
+import persistent.common.InterfaceModel;
+
 /**
  * A product contains ID, name, description, unitPrice and stockQuantity.
  * A product is created with his ID.

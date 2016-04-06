@@ -1,8 +1,8 @@
 package persistent.abstractclass.list;
 
 import common.set.SetWithKey;
-import persistent.abstractclass.InterfaceModel;
 import persistent.abstractclass.Task;
+import persistent.common.InterfaceModel;
 
 /**
  * an aggregation of task accessible by index

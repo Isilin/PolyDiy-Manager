@@ -2,7 +2,7 @@ package persistent.abstractclass.list;
 
 import common.set.SetWithKey;
 import persistent.abstractclass.Activity;
-import persistent.abstractclass.InterfaceModel;
+import persistent.common.InterfaceModel;
 
 /**
  * An aggregation of activity accessible by keys

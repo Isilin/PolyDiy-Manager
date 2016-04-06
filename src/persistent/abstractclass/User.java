@@ -1,20 +1,19 @@
 package persistent.abstractclass;
 
-import java.util.List;
-
 import common.exception.dev.NotFoundParameter;
 import common.set.ListOfID;
+import persistent.common.InterfaceModel;
 
 public abstract class User implements InterfaceModel {
 	protected int ID = -1;
 	protected int IDaccount = -1;
 	
-	protected List<Integer> journalEntryIDs = new ListOfID("journalEntryIDs", "User");
-	protected List<Integer> categoryIDs = new ListOfID("categoryIDs", "User");
-	protected List<Integer> proposedActivityCategoryIDs = new ListOfID("proposedActivityCategoryIDs", "User");
-	protected List<Integer> wishlistIDs = new ListOfID("wishlistIDs", "User");
+	protected ListOfID journalEntryIDs = new ListOfID("journalEntryIDs", "User");
+	protected ListOfID categoryIDs = new ListOfID("categoryIDs", "User");
+	protected ListOfID proposedActivityCategoryIDs = new ListOfID("proposedActivityCategoryIDs", "User");
+	protected ListOfID wishlistIDs = new ListOfID("wishlistIDs", "User");
 	protected int cartID = -1;
-	protected List<Integer> requestedEstimateIDs = new ListOfID("requestedEstimateIDs", "User");
+	protected ListOfID requestedEstimateIDs = new ListOfID("requestedEstimateIDs", "User");
 	
 	/**
 	 * @return the iD
@@ -41,28 +40,28 @@ public abstract class User implements InterfaceModel {
 	/**
 	 * @return the journalEntryIDs
 	 */
-	public List<Integer> getJournalEntryIDs() {
+	public ListOfID getJournalEntryIDs() {
 		return this.journalEntryIDs;
 	}
 	
 	/**
 	 * @return the categoryIDs
 	 */
-	public List<Integer> getCategoryIDs() {
+	public ListOfID getCategoryIDs() {
 		return this.categoryIDs;
 	}
 	
 	/**
 	 * @return the proposedActivityCategoryIDs
 	 */
-	public List<Integer> getProposedActivityCategoryIDs() {
+	public ListOfID getProposedActivityCategoryIDs() {
 		return this.proposedActivityCategoryIDs;
 	}
 	
 	/**
 	 * @return the wishlistIDs
 	 */
-	public List<Integer> getWishlistIDs() {
+	public ListOfID getWishlistIDs() {
 		return this.wishlistIDs;
 	}
 	
@@ -76,7 +75,7 @@ public abstract class User implements InterfaceModel {
 	/**
 	 * @return the requestedEstimateIDs
 	 */
-	public List<Integer> getRequestedEstimateIDs() {
+	public ListOfID getRequestedEstimateIDs() {
 		return this.requestedEstimateIDs;
 	}
 	
@@ -97,28 +96,28 @@ public abstract class User implements InterfaceModel {
 	/**
 	 * @param journalEntryIDs the journalEntryIDs to set
 	 */
-	public void setJournalEntryIDs(List<Integer> journalEntryIDs) {
+	public void setJournalEntryIDs(ListOfID journalEntryIDs) {
 		this.journalEntryIDs = journalEntryIDs;
 	}
 	
 	/**
 	 * @param categoryIDs the categoryIDs to set
 	 */
-	public void setCategoryIDs(List<Integer> categoryIDs) {
+	public void setCategoryIDs(ListOfID categoryIDs) {
 		this.categoryIDs = categoryIDs;
 	}
 	
 	/**
 	 * @param proposedActivityCategoryIDs the proposedActivityCategoryIDs to set
 	 */
-	public void setProposedActivityCategoryIDs(List<Integer> proposedActivityCategoryIDs) {
+	public void setProposedActivityCategoryIDs(ListOfID proposedActivityCategoryIDs) {
 		this.proposedActivityCategoryIDs = proposedActivityCategoryIDs;
 	}
 	
 	/**
 	 * @param wishlistIDs the wishlistIDs to set
 	 */
-	public void setWishlistIDs(List<Integer> wishlistIDs) {
+	public void setWishlistIDs(ListOfID wishlistIDs) {
 		this.wishlistIDs = wishlistIDs;
 	}
 	
@@ -132,7 +131,7 @@ public abstract class User implements InterfaceModel {
 	/**
 	 * @param requestedEstimateIDs the requestedEstimateIDs to set
 	 */
-	public void setRequestedEstimateIDs(List<Integer> requestedEstimateIDs) {
+	public void setRequestedEstimateIDs(ListOfID requestedEstimateIDs) {
 		this.requestedEstimateIDs = requestedEstimateIDs;
 	}
 }

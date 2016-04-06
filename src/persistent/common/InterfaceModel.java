@@ -1,4 +1,4 @@
-package persistent.abstractclass;
+package persistent.common;
 
 import java.util.List;
 
