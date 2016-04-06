@@ -13,6 +13,7 @@ import org.codehaus.jackson.map.ObjectMapper;
 
 import common.exception.dev.AlertDriver;
 import common.exception.dev.ErrorConnectionException;
+import common.parameter.ConnectionParameter;
 
 /**
  * This class crate a connection to the DB with JDBC.

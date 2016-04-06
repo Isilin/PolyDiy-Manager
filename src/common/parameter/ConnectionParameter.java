@@ -1,13 +1,13 @@
-package common.jdbc;
+package common.parameter;
 
 /**
  * @author IsilinBN
  *
  */
 public class ConnectionParameter {
-	String user = "";
-	String password = "";
-	String url = "";
+	private String user = "";
+	private String password = "";
+	private String url = "";
 	
 	/**
 	 * @return the user
