@@ -1,7 +1,6 @@
 package persistent.abstractclass;
 
 import common.exception.dev.NotFoundParameter;
-import common.set.ListOfID;
 import persistent.common.Address;
 import persistent.common.InterfaceModel;
 
@@ -11,13 +10,6 @@ import persistent.common.InterfaceModel;
  * @since 2016-04-02
  */
 public abstract class Account implements InterfaceModel {
-	public final static int FIRST = 0;
-	public final static int LAST = 1;
-	
-	protected final static int ADMIN = 0;
-	protected final static int USER = 1;
-	protected final static int SELLER = 2;
-	
 	protected String login = "";
 	protected String password = "";
 	protected int ID = -1;
@@ -25,17 +17,7 @@ public abstract class Account implements InterfaceModel {
 	protected String[] name = new String[2];
 	protected Address address = new Address();
 	
-	protected int[] profilesID = new int[3];
-	protected ListOfID commentIDs = new ListOfID("commentIDs", "Account");
-	protected ListOfID tutorialIDs = new ListOfID("tutorialIDs", "Account");
-	
 	public Account() {
-		this.name[Account.FIRST] = "";
-		this.name[Account.LAST] = "";
-		
-		this.profilesID[Account.ADMIN] = -1;
-		this.profilesID[Account.USER] = -1;
-		this.profilesID[Account.SELLER] = -1;
 	}
 	
 	/**
@@ -89,74 +71,6 @@ public abstract class Account implements InterfaceModel {
 	}
 	
 	/**
-	 * @return true if there is an administrator ID
-	 */
-	public Boolean isAdmin() {
-		return this.profilesID[Account.ADMIN] != -1;
-	}
-	
-	/**
-	 * @return the administrator ID
-	 * @throws NotFoundParameter 
-	 */
-	public int getAdminID() throws NotFoundParameter {
-		if(this.profilesID[Account.ADMIN] == -1) {
-			throw new NotFoundParameter("adminID", "Account");
-		}
-		return this.profilesID[Account.ADMIN];
-	}
-	
-	/**
-	 * @return true if there is a user ID
-	 */
-	public Boolean isUser() {
-		return this.profilesID[Account.USER] != -1;
-	}
-	
-	/**
-	 * @return the user ID
-	 * @throws NotFoundParameter 
-	 */
-	public int getUserID() throws NotFoundParameter {
-		if(this.profilesID[Account.USER] == -1) {
-			throw new NotFoundParameter("userID", "Account");
-		}
-		return this.profilesID[Account.USER];
-	}
-	
-	/**
-	 * @return true if there is an seller ID
-	 */
-	public Boolean isSeller() {
-		return this.profilesID[Account.SELLER] != -1;
-	}
-	
-	/**
-	 * @return the seller ID
-	 * @throws NotFoundParameter 
-	 */
-	public int getSellerID() throws NotFoundParameter {
-		if(this.profilesID[Account.SELLER] == -1) {
-			throw new NotFoundParameter("sellerID", "Account");
-		}
-		return this.profilesID[Account.SELLER];
-	}
-	
-	/**
-	 * @return List of comment's IDs
-	 */
-	public ListOfID getCommentIDs() {
-		return this.commentIDs;
-	}
-	
-	/**
-	 * @return List of tutorial's IDs
-	 */
-	public ListOfID getTutorialIDs() {
-		return this.tutorialIDs;
-	}
-	
-	/**
 	 * @param login the login to set
 	 */
 	public void setLogin(String login) {
@@ -196,40 +110,5 @@ public abstract class Account implements InterfaceModel {
 	 */
 	public void setAddress(Address address) {
 		this.address = address;
-	}
-
-	/**
-	 * @param adminID the administrator ID to set
-	 */
-	public void setAdminID(int adminID) {
-		this.profilesID[Account.ADMIN] = adminID;
-	}
-
-	/**
-	 * @param userID the user ID to set
-	 */
-	public void setUserID(int userID) {
-		this.profilesID[Account.USER] = userID;
-	}
-
-	/**
-	 * @param sellerID the seller ID to set
-	 */
-	public void setSellerID(int sellerID) {
-		this.profilesID[Account.SELLER] = sellerID;
-	}
-	
-	/**
-	 * @param commentIDs the comment's IDs to set
-	 */
-	public void setCommentIDs(ListOfID commentIDs) {
-		this.commentIDs = commentIDs;
-	}
-	
-	/**
-	 * @param commentIDs the tutorial's IDs to set
-	 */
-	public void setTutorialIDs(ListOfID tutorialIDs) {
-		this.tutorialIDs = tutorialIDs;
 	}
 }

@@ -1,14 +1,15 @@
 package persistent.abstractclass;
 
+import common.exception.dev.NotFoundParameter;
 import persistent.common.InterfaceModel;
 
 /**
  * A seller contains ID, nameShop, description, siret and website.
  * A seller is created with his ID.
  * 
- * @author nassim vachor
- * @version 1.0
- * @since 2016-03-21
+ * @author IsilinBN
+ * @version 1.1
+ * @since 2016-04-07
  */
 
 public abstract class Seller implements InterfaceModel{
@@ -18,132 +19,96 @@ public abstract class Seller implements InterfaceModel{
 	protected String description = "";
 	protected String siret = "";
 	protected String website = "";
+	
 	/**
-	 * This is Constructor of Seller.
-	 * @author nassim vachor
-	 * @since 2016-03-21
+	 * @return the iD
+	 * @throws NotFoundParameter 
 	 */
-	public Seller(){
-		
+	public int getID() throws NotFoundParameter {
+		if(this.ID == -1) {
+			throw new NotFoundParameter("ID", "Seller");
+		}
+		return this.ID;
 	}
 	
 	/**
-	 * This is Constructor of Seller with id.
-	 * @author nassim vachor
-	 * @since 2016-03-21
+	 * @return the iDaccount
+	 * @throws NotFoundParameter 
 	 */
-	public Seller (int ID) {
-		this.ID = ID;
-	}
-	/**
-	 * This is a getter of the IDseller.
-	 * @author nassim vachor
-	 * @since 2016-03-21
-	 * return IDseller
-	 */
-	public int getId(){
-		return ID;
-	}
-	/**
-	 * The Setter of IDseller.
-	 * @author nassim vachor
-	 * @since 2016-03-21
-	 * 
-	 */
-	public void setId(int id){
-		this.ID = id;
-	}
-	
-	/**
-	 * This a getter of  id_account.
-	 * @author nassim vachor
-	 * @since 2016-03-21
-	 * return IDaccount
-	 */
-	public int getIDaccount() {
+	public int getIDaccount() throws NotFoundParameter {
+		if(this.IDaccount == -1) {
+			throw new NotFoundParameter("IDaccount", "Seller");
+		}
 		return this.IDaccount;
 	}
+	
 	/**
-	 * This a setter of  id_account.
-	 * @author nassim vachor
-	 * @since 2016-03-21
+	 * @return the nameShop
 	 */
-	
-	public void setIDaccount(int IDaccount) {
-		this.IDaccount = IDaccount;
-	}
-	/** 
-	 * This a getter of  nameShop.
-	 * @author nassim vachor
-	 * @since 2016-03-21
-	 * return nameShop
-	 */
-	
 	public String getNameShop() {
-		return nameShop;
+		return this.nameShop;
 	}
+	
 	/**
-	 * This a setter of  nameShop.
-	 * @author nassim vachor
-	 * @since 2016-03-21
-	 * 
+	 * @return the description
+	 */
+	public String getDescription() {
+		return this.description;
+	}
+	
+	/**
+	 * @return the siret
+	 */
+	public String getSiret() {
+		return this.siret;
+	}
+	
+	/**
+	 * @return the website
+	 */
+	public String getWebsite() {
+		return this.website;
+	}
+	
+	/**
+	 * @param iD the iD to set
+	 */
+	public void setID(int iD) {
+		ID = iD;
+	}
+	
+	/**
+	 * @param iDaccount the iDaccount to set
+	 */
+	public void setIDaccount(int iDaccount) {
+		IDaccount = iDaccount;
+	}
+	
+	/**
+	 * @param nameShop the nameShop to set
 	 */
 	public void setNameShop(String nameShop) {
 		this.nameShop = nameShop;
 	}
+	
 	/**
-	 * This a getter of  Description.
-	 * @author nassim vachor
-	 * @since 2016-03-21
-	 * return Description
-	 */
-	public String getDescription() {
-		return description;
-	}
-	/**
-	 * This a setter of  Description.
-	 * @author nassim vachor
-	 * @since 2016-03-21
-	 * 
+	 * @param description the description to set
 	 */
 	public void setDescription(String description) {
 		this.description = description;
 	}
+	
 	/**
-	 * This a getter of  siret.
-	 * @author nassim vachor
-	 * @since 2016-03-21
-	 * return siret
+	 * @param siret the siret to set
 	 */
-	public String getSiret() {
-		return siret;
-	}
-	/**
-	 * This a setter of  siret.
-	 * @author nassim vachor
-	 * @since 2016-03-21
-	 */ 
 	public void setSiret(String siret) {
 		this.siret = siret;
 	}
+	
 	/**
-	 * This a getter of  website.
-	 * @author nassim vachor
-	 * @since 2016-03-21
-	 * return website
-	 */
-	public String getWebsite() {
-		return website;
-	}
-	/**
-	 * This a setter of  website.
-	 * @author nassim vachor
-	 * @since 2016-03-21
+	 * @param website the website to set
 	 */
 	public void setWebsite(String website) {
 		this.website = website;
 	}
-
-	
-	
 }

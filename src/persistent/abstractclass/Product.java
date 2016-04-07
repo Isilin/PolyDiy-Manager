@@ -1,5 +1,6 @@
 package persistent.abstractclass;
 
+import common.exception.dev.NotFoundParameter;
 import persistent.common.InterfaceModel;
 
 /**
@@ -11,85 +12,121 @@ import persistent.common.InterfaceModel;
  * @since 2016-03-19
  */
 public abstract class Product implements InterfaceModel {
-	protected int IDProduct;
-	protected String name;
-	protected String description;
-	protected float unitPrice;
-	protected int stockQuantity;
-	protected int IDSeller;
-	protected int IDCategory;
-	protected String categoryName;
+	protected int ID = -1;
+	protected String name = "";
+	protected String description = "";
+	protected float unitPrice = 0;
+	protected int stockQuantity = 0;
+	protected int IDSeller = -1;
+	protected int IDCategory = -1;
 	
-	protected Boolean hasChanged = false;
+	/**
+	 * @return the iDProduct
+	 * @throws NotFoundParameter 
+	 */
+	public int getID() throws NotFoundParameter {
+		if(this.ID == -1) {
+			throw new NotFoundParameter("ID", "Product");
+		}
+		return this.ID;
+	}
 	
-	// the product is created from is ID
-	public Product(int ID) {
-		this.IDProduct = ID;
-		this.hasChanged = true;
-	}
-	public Product (int ID, int IDSeller){
-		this.IDProduct= ID;
-		this.IDSeller = IDSeller;
-		this.hasChanged = true;
-	}
-
-	public int getIDProduct() {
-		return this.IDProduct;
-	}
-	public void setIDProduct(int ID) {
-		this.IDProduct = ID;
-		this.hasChanged = true;
-	}
+	/**
+	 * @return the name
+	 */
 	public String getName() {
-		return name;
+		return this.name;
 	}
+	
+	/**
+	 * @return the description
+	 */
+	public String getDescription() {
+		return this.description;
+	}
+	
+	/**
+	 * @return the unitPrice
+	 */
+	public float getUnitPrice() {
+		return this.unitPrice;
+	}
+	
+	/**
+	 * @return the stockQuantity
+	 */
+	public int getStockQuantity() {
+		return this.stockQuantity;
+	}
+	
+	/**
+	 * @return the iDSeller
+	 * @throws NotFoundParameter 
+	 */
+	public int getIDSeller() throws NotFoundParameter {
+		if(this.IDSeller == -1) {
+			throw new NotFoundParameter("IDSeller", "Product");
+		}
+		return this.IDSeller;
+	}
+	
+	/**
+	 * @return the iDCategory
+	 * @throws NotFoundParameter 
+	 */
+	public int getIDCategory() throws NotFoundParameter {
+		if(this.IDCategory == -1) {
+			throw new NotFoundParameter("IDCategory", "Product");
+		}
+		return this.IDCategory;
+	}
+	
+	/**
+	 * @param iDProduct the iD to set
+	 */
+	public void setID(int ID) {
+		this.ID = ID;
+	}
+	
+	/**
+	 * @param name the name to set
+	 */
 	public void setName(String name) {
 		this.name = name;
-		this.hasChanged = true;
-	}
-	public String getDescription() {
-		return description;
-	}
-	public void setDescription(String description) {
-		this.description = description;
-		this.hasChanged = true;
-	}
-	public float getUnitPrice() {
-		return unitPrice;
-	}
-	public void setUnitPrice(float unitPrice) {
-		this.unitPrice = unitPrice;
-		this.hasChanged = true;
-	}
-	public int getStockQuantity() {
-		return stockQuantity;
-	}
-	public void setStockQuantity(int stockQuantity) {
-		this.stockQuantity = stockQuantity;
-		this.hasChanged = true;
-	}
-	public int getIDSeller() {
-		return IDSeller;
-	}
-
-	public void setIDSeller(int iDSeller) {
-		IDSeller = iDSeller;
-	}
-
-	public int getIDCategory() {
-		return IDCategory;
-	}
-
-	public void setIDCategory(int iDCategory) {
-		IDCategory = iDCategory;
-	}
-
-	public String getCategoryName() {
-		return categoryName;
-	}
-
-	public void setCategoryName(String categoryName) {
-		this.categoryName = categoryName;
 	}
 	
+	/**
+	 * @param description the description to set
+	 */
+	public void setDescription(String description) {
+		this.description = description;
+	}
+	
+	/**
+	 * @param unitPrice the unitPrice to set
+	 */
+	public void setUnitPrice(float unitPrice) {
+		this.unitPrice = unitPrice;
+	}
+	
+	/**
+	 * @param stockQuantity the stockQuantity to set
+	 */
+	public void setStockQuantity(int stockQuantity) {
+		this.stockQuantity = stockQuantity;
+	}
+	
+	/**
+	 * @param iDSeller the iDSeller to set
+	 */
+	public void setIDSeller(int IDSeller) {
+		this.IDSeller = IDSeller;
+	}
+	
+	/**
+	 * @param iDCategory the iDCategory to set
+	 */
+	public void setIDCategory(int IDCategory) {
+		this.IDCategory = IDCategory;
+	}
 }

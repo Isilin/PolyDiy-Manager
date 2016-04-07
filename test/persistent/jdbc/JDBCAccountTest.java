@@ -87,10 +87,6 @@ public class JDBCAccountTest {
 			assertEquals(this.account.getLogin(), "nas");
 			assertEquals(this.account.getPassword(), "ca978112ca1bbdcafac231b39a23dc4da786eff8147c4e72b9807785afee48bb");
 			assertEquals(this.account.getID(), 1);
-			assertTrue(this.account.isUser());
-			assertFalse(this.account.isAdmin());
-			assertEquals(this.account.getCommentIDs().size(), 1);
-			assertEquals(this.account.getTutorialIDs().size(), 0);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

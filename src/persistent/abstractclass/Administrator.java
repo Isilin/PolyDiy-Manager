@@ -7,7 +7,7 @@ import persistent.common.InterfaceModel;
  * @author IsilinBN
  *
  */
-public abstract class User implements InterfaceModel {
+public abstract class Administrator implements InterfaceModel {
 	protected int ID = -1;
 	protected int IDaccount = -1;
 	
@@ -17,7 +17,7 @@ public abstract class User implements InterfaceModel {
 	 */
 	public int getID() throws NotFoundParameter {
 		if(this.ID == -1) {
-			throw new NotFoundParameter("ID", "User");
+			throw new NotFoundParameter("ID", "Administrator");
 		}
 		return this.ID;
 	}
@@ -28,7 +28,7 @@ public abstract class User implements InterfaceModel {
 	 */
 	public int getIDaccount() throws NotFoundParameter {
 		if(this.IDaccount == -1) {
-			throw new NotFoundParameter("IDaccount", "User");
+			throw new NotFoundParameter("IDaccount", "Administrator");
 		}
 		return this.IDaccount;
 	}

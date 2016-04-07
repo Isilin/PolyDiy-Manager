@@ -37,9 +37,8 @@ CREATE TABLE public.product_category(
 -- Table: user_account
 ------------------------------------------------------------
 CREATE TABLE public.user_account(
-	id_user    SERIAL NOT NULL ,
 	id_profile INT  NOT NULL ,
-	CONSTRAINT prk_constraint_user_account PRIMARY KEY (id_user,id_profile)
+	CONSTRAINT prk_constraint_user_account PRIMARY KEY (id_profile)
 )WITHOUT OIDS;
 
 
@@ -53,7 +52,6 @@ CREATE TABLE public.product(
 	unitPrice     NUMERIC (25,0)   ,
 	stockQuantity VARCHAR (25)  ,
 	id_category   INT  NOT NULL ,
-	id_seller     INT   ,
 	id_profile    INT   ,
 	CONSTRAINT prk_constraint_product PRIMARY KEY (id_product)
 )WITHOUT OIDS;
@@ -63,13 +61,12 @@ CREATE TABLE public.product(
 -- Table: seller_account
 ------------------------------------------------------------
 CREATE TABLE public.seller_account(
-	id_seller   SERIAL NOT NULL ,
 	nameShop    VARCHAR (25)  ,
 	siret       VARCHAR (25)  ,
 	website     VARCHAR (25)  ,
 	description VARCHAR (25)  ,
 	id_profile  INT  NOT NULL ,
-	CONSTRAINT prk_constraint_seller_account PRIMARY KEY (id_seller,id_profile)
+	CONSTRAINT prk_constraint_seller_account PRIMARY KEY (id_profile)
 )WITHOUT OIDS;
 
 
@@ -77,9 +74,8 @@ CREATE TABLE public.seller_account(
 -- Table: admin_account
 ------------------------------------------------------------
 CREATE TABLE public.admin_account(
-	id_admin   SERIAL NOT NULL ,
 	id_profile INT  NOT NULL ,
-	CONSTRAINT prk_constraint_admin_account PRIMARY KEY (id_admin,id_profile)
+	CONSTRAINT prk_constraint_admin_account PRIMARY KEY (id_profile)
 )WITHOUT OIDS;
 
 
@@ -89,7 +85,6 @@ CREATE TABLE public.admin_account(
 CREATE TABLE public.wishlist(
 	id_wishlist SERIAL NOT NULL ,
 	label       VARCHAR (25)  ,
-	id_user     INT   ,
 	id_profile  INT   ,
 	CONSTRAINT prk_constraint_wishlist PRIMARY KEY (id_wishlist)
 )WITHOUT OIDS;
@@ -103,7 +98,6 @@ CREATE TABLE public.order(
 	dateOrder       DATE   ,
 	totalPrice      FLOAT   ,
 	DeliveryAddress VARCHAR (25)  ,
-	id_user         INT   ,
 	id_profile      INT   ,
 	CONSTRAINT prk_constraint_order PRIMARY KEY (id_order)
 )WITHOUT OIDS;
@@ -118,7 +112,6 @@ CREATE TABLE public.journal_entry(
 	date_post        DATE  NOT NULL ,
 	title            VARCHAR (128)  ,
 	content          VARCHAR (512)  ,
-	id_user          INT   ,
 	id_profile       INT   ,
 	CONSTRAINT prk_constraint_journal_entry PRIMARY KEY (id_journal_entry)
 )WITHOUT OIDS;
@@ -132,7 +125,6 @@ CREATE TABLE public.activity_category(
 	label                VARCHAR (50)  ,
 	short_description    VARCHAR (128)  ,
 	description          VARCHAR (512)  ,
-	id_user              INT   ,
 	id_profile           INT   ,
 	CONSTRAINT prk_constraint_activity_category PRIMARY KEY (id_activity_category)
 )WITHOUT OIDS;
@@ -146,7 +138,6 @@ CREATE TABLE public.activity(
 	id_activity          SERIAL NOT NULL ,
 	description          VARCHAR (512)  ,
 	id_activity_category INT   ,
-	id_user              INT   ,
 	id_profile           INT   ,
 	CONSTRAINT prk_constraint_activity PRIMARY KEY (id_activity)
 )WITHOUT OIDS;
@@ -160,7 +151,6 @@ CREATE TABLE public.task(
 	title       VARCHAR (50)  ,
 	id_activity INT   ,
 	id_category INT   ,
-	id_user     INT   ,
 	id_profile  INT   ,
 	CONSTRAINT prk_constraint_task PRIMARY KEY (id_task)
 )WITHOUT OIDS;
@@ -176,7 +166,6 @@ CREATE TABLE public.objective(
 	deadLine     DATE   ,
 	id_activity  INT   ,
 	id_category  INT   ,
-	id_user      INT   ,
 	id_profile   INT   ,
 	CONSTRAINT prk_constraint_objective PRIMARY KEY (id_objective)
 )WITHOUT OIDS;
@@ -189,7 +178,6 @@ CREATE TABLE public.category(
 	id_category SERIAL NOT NULL ,
 	title       VARCHAR (25)  ,
 	description VARCHAR (25)  ,
-	id_user     INT   ,
 	id_profile  INT   ,
 	CONSTRAINT prk_constraint_category PRIMARY KEY (id_category)
 )WITHOUT OIDS;
@@ -328,30 +316,21 @@ CREATE TABLE public.propose_task(
 ALTER TABLE public.product_category ADD CONSTRAINT FK_product_category_id_product FOREIGN KEY (id_product) REFERENCES public.product(id_product);
 ALTER TABLE public.user_account ADD CONSTRAINT FK_user_account_id_profile FOREIGN KEY (id_profile) REFERENCES public.profile(id_profile);
 ALTER TABLE public.product ADD CONSTRAINT FK_product_id_category FOREIGN KEY (id_category) REFERENCES public.product_category(id_category);
-ALTER TABLE public.product ADD CONSTRAINT FK_product_id_seller FOREIGN KEY (id_seller) REFERENCES public.seller_account(id_seller);
 ALTER TABLE public.product ADD CONSTRAINT FK_product_id_profile FOREIGN KEY (id_profile) REFERENCES public.profile(id_profile);
 ALTER TABLE public.seller_account ADD CONSTRAINT FK_seller_account_id_profile FOREIGN KEY (id_profile) REFERENCES public.profile(id_profile);
 ALTER TABLE public.admin_account ADD CONSTRAINT FK_admin_account_id_profile FOREIGN KEY (id_profile) REFERENCES public.profile(id_profile);
-ALTER TABLE public.wishlist ADD CONSTRAINT FK_wishlist_id_user FOREIGN KEY (id_user) REFERENCES public.user_account(id_user);
 ALTER TABLE public.wishlist ADD CONSTRAINT FK_wishlist_id_profile FOREIGN KEY (id_profile) REFERENCES public.profile(id_profile);
-ALTER TABLE public.order ADD CONSTRAINT FK_order_id_user FOREIGN KEY (id_user) REFERENCES public.user_account(id_user);
 ALTER TABLE public.order ADD CONSTRAINT FK_order_id_profile FOREIGN KEY (id_profile) REFERENCES public.profile(id_profile);
-ALTER TABLE public.journal_entry ADD CONSTRAINT FK_journal_entry_id_user FOREIGN KEY (id_user) REFERENCES public.user_account(id_user);
 ALTER TABLE public.journal_entry ADD CONSTRAINT FK_journal_entry_id_profile FOREIGN KEY (id_profile) REFERENCES public.profile(id_profile);
-ALTER TABLE public.activity_category ADD CONSTRAINT FK_activity_category_id_user FOREIGN KEY (id_user) REFERENCES public.user_account(id_user);
 ALTER TABLE public.activity_category ADD CONSTRAINT FK_activity_category_id_profile FOREIGN KEY (id_profile) REFERENCES public.profile(id_profile);
 ALTER TABLE public.activity ADD CONSTRAINT FK_activity_id_activity_category FOREIGN KEY (id_activity_category) REFERENCES public.activity_category(id_activity_category);
-ALTER TABLE public.activity ADD CONSTRAINT FK_activity_id_user FOREIGN KEY (id_user) REFERENCES public.user_account(id_user);
 ALTER TABLE public.activity ADD CONSTRAINT FK_activity_id_profile FOREIGN KEY (id_profile) REFERENCES public.profile(id_profile);
 ALTER TABLE public.task ADD CONSTRAINT FK_task_id_activity FOREIGN KEY (id_activity) REFERENCES public.activity(id_activity);
 ALTER TABLE public.task ADD CONSTRAINT FK_task_id_category FOREIGN KEY (id_category) REFERENCES public.category(id_category);
-ALTER TABLE public.task ADD CONSTRAINT FK_task_id_user FOREIGN KEY (id_user) REFERENCES public.user_account(id_user);
 ALTER TABLE public.task ADD CONSTRAINT FK_task_id_profile FOREIGN KEY (id_profile) REFERENCES public.profile(id_profile);
 ALTER TABLE public.objective ADD CONSTRAINT FK_objective_id_activity FOREIGN KEY (id_activity) REFERENCES public.activity(id_activity);
 ALTER TABLE public.objective ADD CONSTRAINT FK_objective_id_category FOREIGN KEY (id_category) REFERENCES public.category(id_category);
-ALTER TABLE public.objective ADD CONSTRAINT FK_objective_id_user FOREIGN KEY (id_user) REFERENCES public.user_account(id_user);
 ALTER TABLE public.objective ADD CONSTRAINT FK_objective_id_profile FOREIGN KEY (id_profile) REFERENCES public.profile(id_profile);
-ALTER TABLE public.category ADD CONSTRAINT FK_category_id_user FOREIGN KEY (id_user) REFERENCES public.user_account(id_user);
 ALTER TABLE public.category ADD CONSTRAINT FK_category_id_profile FOREIGN KEY (id_profile) REFERENCES public.profile(id_profile);
 ALTER TABLE public.profile ADD CONSTRAINT FK_profile_id_account FOREIGN KEY (id_account) REFERENCES public.Account(id_account);
 ALTER TABLE public.notification ADD CONSTRAINT FK_notification_id_profile FOREIGN KEY (id_profile) REFERENCES public.profile(id_profile);
