@@ -1,59 +1,94 @@
 package persistent.abstractclass;
 
+import common.exception.dev.NotFoundParameter;
 import persistent.common.InterfaceModel;
 
 public abstract class Activity implements InterfaceModel {
-	protected int idActivity = -1;
+	protected int ID = -1;
 	protected String title = "";
 	protected String description = "";
-	protected String deadline = "";
-	protected int idActivityCategory = -1;
-	protected int idUser = -1;
+	protected int activityCategoryID = -1;
+	protected int userID = -1;
 	
-	public int getIdActivity() {
-		return this.idActivity;
+	/**
+	 * @return the iD
+	 * @throws NotFoundParameter 
+	 */
+	public int getID() throws NotFoundParameter {
+		if(this.ID == -1) {
+			throw new NotFoundParameter("ID", "Activity");
+		}
+		return this.ID;
 	}
 	
+	/**
+	 * @return the title
+	 */
 	public String getTitle() {
 		return this.title;
 	}
 	
+	/**
+	 * @return the description
+	 */
 	public String getDescription() {
 		return this.description;
 	}
-	public String getDeadline() {
-		return this.deadline;
+	
+	/**
+	 * @return the activityCategoryID
+	 * @throws NotFoundParameter 
+	 */
+	public int getActivityCategoryID() throws NotFoundParameter {
+		if(this.activityCategoryID == -1) {
+			throw new NotFoundParameter("activityCategoryID", "Activity");
+		}
+		return this.activityCategoryID;
 	}
 	
-	public int getIdActivityCategory() {
-		return this.idActivityCategory;
+	/**
+	 * @return the userID
+	 * @throws NotFoundParameter 
+	 */
+	public int getUserID() throws NotFoundParameter {
+		if(this.userID == -1) {
+			throw new NotFoundParameter("userID", "Activity");
+		}
+		return this.userID;
 	}
 	
-	public int getIdUser() {
-		return this.idUser;
+	/**
+	 * @param iD the iD to set
+	 */
+	public void setID(int iD) {
+		ID = iD;
 	}
 	
-	public void setIdActivity(int idActivity) {
-		this.idActivity = idActivity;
-	}
-	
+	/**
+	 * @param title the title to set
+	 */
 	public void setTitle(String title) {
 		this.title = title;
 	}
 	
+	/**
+	 * @param description the description to set
+	 */
 	public void setDescription(String description) {
 		this.description = description;
 	}
 	
-	public void setDeadline(String deadline) {
-		this.deadline = deadline;
+	/**
+	 * @param activityCategoryID the activityCategoryID to set
+	 */
+	public void setActivityCategoryID(int activityCategoryID) {
+		this.activityCategoryID = activityCategoryID;
 	}
 	
-	public void setIdActivityCategory(int idActivityCategory) {
-		this.idActivityCategory = idActivityCategory;
-	}
-	
-	public void setIdUser(int idUser) {
-		this.idUser = idUser;
+	/**
+	 * @param userID the userID to set
+	 */
+	public void setUserID(int userID) {
+		this.userID = userID;
 	}
 }
