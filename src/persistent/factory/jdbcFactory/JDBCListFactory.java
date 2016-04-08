@@ -17,10 +17,10 @@ import persistent.abstractclass.list.SetWishList;
 import persistent.abstractclass.list.WishList;
 import persistent.factory.ListFactory;
 import persistent.jdbc.JDBCSetProduct;
+import persistent.jdbc.JDBCWishList;
 import persistent.jdbc.list.JDBCCart;
 import persistent.jdbc.list.JDBCSetInfoWishList;
 import persistent.jdbc.list.JDBCSetWishList;
-import persistent.jdbc.list.JDBCWishList;
 
 public class JDBCListFactory extends ListFactory{
 
