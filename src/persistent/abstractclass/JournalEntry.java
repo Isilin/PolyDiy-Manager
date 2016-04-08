@@ -16,6 +16,8 @@ public abstract class JournalEntry implements InterfaceModel {
 	protected String title = "";
 	protected String content = "";
 	protected int userID = -1;
+	protected int elementID = -1;
+	protected String typeElement = "";
 	
 	/**
 	 * @return the iD
@@ -68,6 +70,24 @@ public abstract class JournalEntry implements InterfaceModel {
 	}
 	
 	/**
+	 * @return the elementID
+	 * @throws NotFoundParameter
+	 */
+	public int getElementID() throws NotFoundParameter {
+		if(this.elementID == -1) {
+			throw new NotFoundParameter("elementID", "JournalEntry");
+		}
+		return this.elementID;
+	}
+	
+	/**
+	 * @return the typeElement
+	 */
+	public String getTypeElement() {
+		return this.typeElement;
+	}
+	
+	/**
 	 * @param iD the iD to set
 	 */
 	public void setID(int iD) {
@@ -107,5 +127,19 @@ public abstract class JournalEntry implements InterfaceModel {
 	 */
 	public void setUserID(int userID) {
 		this.userID = userID;
+	}
+	
+	/**
+	 * @param elementID the elementID to set
+	 */
+	public void setElementID(int elementID) {
+		this.elementID = elementID;
+	}
+	
+	/**
+	 * @param typeElement the typeElement to set
+	 */
+	public void setTypeElement(String typeElement) {
+		this.typeElement = typeElement;
 	}
 }
