@@ -1,5 +1,6 @@
 package graphic.ui.session;
 
+import java.awt.BorderLayout;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 
@@ -88,7 +89,7 @@ public class LoginUI extends AbstractUI{
 					if(this.session.getIDAdmin() != -1) {
 						this.communication.shareElement("id_admin", this.session.getIDAdmin());
 					}
-					this.notifyObservers("login");
+					this.update("login");
 				}
 			} catch (Exception e) {
 				JOptionPane.showMessageDialog(null, e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
@@ -99,5 +100,18 @@ public class LoginUI extends AbstractUI{
 	
 	public Boolean isConnected() {
 		return this.session != null;
+	}
+	
+	@Override
+	public void update(String transition) {
+		switch(transition) {
+		case "login":
+			this.app.clearUI();
+			this.app.addUI("navBar", BorderLayout.NORTH, this.communication);
+			//this.addUI("account_welcome", BorderLayout.CENTER);
+			break;
+		default:
+			break;
+		}
 	}
 }

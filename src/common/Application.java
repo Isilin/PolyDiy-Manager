@@ -31,8 +31,6 @@ public class Application extends JFrame{
 	
 	Map<String, AbstractUI> panels = new HashMap<String, AbstractUI>();
 
-	UIMessage message = new UIMessage();
-
 	/**
 	 * Constructor of the application - initialize the window.
 	 */
@@ -60,9 +58,9 @@ public class Application extends JFrame{
 	 * @param ui - label of the UI to build.
 	 * @param position - position of the UI in the window, following the BordeLayout manager.
 	 */
-	public void addUI(String ui, String position) {
+	public void addUI(String ui, String position, UIMessage message) {
 		FactoryUI factory = new FactoryUI();
-		this.panels.put(ui, factory.build(ui, this.message, this));
+		this.panels.put(ui, factory.build(ui, message, this));
 		this.add(this.panels.get(ui).getPanel(), position);
 		this.setVisible(true);
 	}
@@ -72,7 +70,7 @@ public class Application extends JFrame{
 	 * Implement the switch between UIs.
 	 */
 	
-public void update(UIMessage message) {
+/*public void update(UIMessage message) {
 		this.message = message;
 
 		switch(this.message.getTransition()) {
@@ -196,17 +194,18 @@ public void update(UIMessage message) {
 		this.getContentPane().validate();
 		this.repaint();
 		this.pack();
-	}
+	}*/
 	
 	/**
 	 * End the session before closing the application.
 	 * @throws Exception Different error to display to user.
 	 */
 	private void endSession() throws Exception {
-		if (this.message != null && this.message.isExisting("id_account")) {
+		UIMessage message = this.panels.values().iterator().next().getMessage();
+		if (message != null && message.isExisting("id_account")) {
 			FacadeSession facade = new FacadeSession();
 			try {
-				facade.logout((int)this.message.getElement("id_account"));
+				facade.logout((int)message.getElement("id_account"));
 			} catch (ErrorConnectionException e) {
 				System.err.println(e.getMessage());
 			}
@@ -216,13 +215,13 @@ public void update(UIMessage message) {
 	/**
 	 * Remove all the UI from the application.
 	 */
-	private void clearUI() {
+	public void clearUI() {
 		this.getContentPane().removeAll();
 		this.panels.clear();
 	}
 	
 	public void init() {
-		this.addUI("login", BorderLayout.NORTH);
-		this.addUI("createAccount", BorderLayout.CENTER);
+		this.addUI("login", BorderLayout.NORTH, new UIMessage());
+		//this.addUI("createAccount", BorderLayout.CENTER);
 	}
 }

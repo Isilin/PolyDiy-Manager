@@ -20,8 +20,9 @@ public abstract class AbstractUI implements ActionListener {
 		return this.panel;
 	}
 	
-	public void notifyObservers(String message) {
-		this.communication.setTransition(message);
-		this.app.update(this.communication);
+	public UIMessage getMessage() {
+		return this.communication;
 	}
+	
+	public abstract void update(String transition);
 }

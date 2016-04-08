@@ -23,8 +23,6 @@ public class NavBarUI extends AbstractUI{
 	public NavBarUI(UIMessage communication, Application app) {
 		super(communication, app);
 		
-//		this.panel.setLayout(null);
-		
 		this.userLabel.setText("Welcome " + this.communication.getElement("login"));
 		this.panel.add(userLabel);
 
@@ -99,12 +97,17 @@ public class NavBarUI extends AbstractUI{
 		if (!action.equals("")) {
 			try {
 				//this.setChanged();
-				this.notifyObservers(action);
+				this.update(action);
 			} catch (Exception e) {
 				JOptionPane.showMessageDialog(null, e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
 			}
 		} else {
 			System.err.println("Button action not catch.");
 		}
+	}
+	
+	@Override
+	public void update(String transition) {
+		
 	}
 }
