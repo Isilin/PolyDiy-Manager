@@ -1,16 +1,19 @@
 package graphic.engine;
 
 import java.awt.event.ActionListener;
-import java.util.Observable;
 
 import javax.swing.JPanel;
 
-public abstract class AbstractUI extends Observable implements ActionListener {
+import common.Application;
+
+public abstract class AbstractUI implements ActionListener {
 	protected JPanel panel = new JPanel();
 	protected UIMessage communication = new UIMessage();
+	protected Application app = null;
 	
-	public AbstractUI(UIMessage communication) {
+	public AbstractUI(UIMessage communication, Application app) {
 		this.communication = communication;
+		this.app = app;
 	}
 	
 	public JPanel getPanel() {
@@ -19,6 +22,6 @@ public abstract class AbstractUI extends Observable implements ActionListener {
 	
 	public void notifyObservers(String message) {
 		this.communication.setTransition(message);
-		this.notifyObservers(this.communication);
+		this.app.update(this.communication);
 	}
 }

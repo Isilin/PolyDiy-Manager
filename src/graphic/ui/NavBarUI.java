@@ -7,6 +7,7 @@ import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 
+import common.Application;
 import graphic.engine.AbstractUI;
 import graphic.engine.UIMessage;
 import logic.facade.FacadeSession;
@@ -19,8 +20,8 @@ public class NavBarUI extends AbstractUI{
 	private JButton logout = new JButton();
 	private JLabel userLabel = new JLabel();
 	
-	public NavBarUI(UIMessage communication) {
-		super(communication);
+	public NavBarUI(UIMessage communication, Application app) {
+		super(communication, app);
 		
 //		this.panel.setLayout(null);
 		
@@ -97,7 +98,7 @@ public class NavBarUI extends AbstractUI{
 		// we have an action, so we notify observers.
 		if (!action.equals("")) {
 			try {
-				this.setChanged();
+				//this.setChanged();
 				this.notifyObservers(action);
 			} catch (Exception e) {
 				JOptionPane.showMessageDialog(null, e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);

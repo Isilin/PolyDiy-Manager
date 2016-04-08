@@ -1,4 +1,4 @@
-import java.awt.BorderLayout;
+import common.Application;
 
 /**
  * Generate the application with default screen.
@@ -7,7 +7,6 @@ public class Main {
 
 	public static void main(String[] args) throws Exception {
 		Application app = new Application();
-		app.addUI("login", BorderLayout.NORTH);
-		app.addUI("createAccount", BorderLayout.CENTER);
+		app.init();
 	}
 }

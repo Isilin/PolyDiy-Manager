@@ -3,6 +3,7 @@ package graphic.engine;
 import java.util.HashMap;
 import java.util.Map;
 
+import common.Application;
 import graphic.ui.NavBarUI;
 import graphic.ui.account.AccountUI;
 import graphic.ui.account.CreateAccountUI;
@@ -57,10 +58,10 @@ public class FactoryUI {
 	}
 	
 	@SuppressWarnings("unchecked")
-	public AbstractUI build(String name, UIMessage message) {
+	public AbstractUI build(String name, UIMessage message, Application app) {
 		try {
 			if(this.ui.containsKey(name)) {
-				return (AbstractUI)this.ui.get(name).getConstructor(UIMessage.class).newInstance(message);
+				return (AbstractUI)this.ui.get(name).getConstructor(UIMessage.class, Application.class).newInstance(message, app);
 			} else {
 				throw new Exception("Unknow ui " + name + " !");
 			}

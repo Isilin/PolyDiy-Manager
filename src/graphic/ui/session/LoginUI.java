@@ -10,6 +10,7 @@ import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 
+import common.Application;
 import graphic.engine.AbstractUI;
 import graphic.engine.UIMessage;
 import logic.facade.FacadeSession;
@@ -35,8 +36,8 @@ public class LoginUI extends AbstractUI{
 	
 	private Session session = null;
 	
-	public LoginUI(UIMessage communication) {
-		super(communication);
+	public LoginUI(UIMessage communication, Application app) {
+		super(communication, app);
 		
 		// label welcome
 		this.lblWelcome.setText("PolyDIY Manager");
@@ -87,7 +88,6 @@ public class LoginUI extends AbstractUI{
 					if(this.session.getIDAdmin() != -1) {
 						this.communication.shareElement("id_admin", this.session.getIDAdmin());
 					}
-					this.setChanged();
 					this.notifyObservers("login");
 				}
 			} catch (Exception e) {
