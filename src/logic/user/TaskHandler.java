@@ -7,8 +7,8 @@ import persistent.abstractclass.Task;
 import persistent.abstractclass.list.SetTask;
 import persistent.factory.ActivityFactory;
 import persistent.factory.CategoryFactory;
-import persistent.factory.jdbcfactory.JDBCActivityFactory;
-import persistent.factory.jdbcfactory.JDBCCategoryFactory;
+import persistent.factory.jdbc.JDBCActivityFactory;
+import persistent.factory.jdbc.JDBCCategoryFactory;
 
 public class TaskHandler {
 	private SetTask tasks = null;

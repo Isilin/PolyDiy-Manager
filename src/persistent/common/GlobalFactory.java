@@ -27,7 +27,7 @@ public class GlobalFactory<T> {
 			String methodFactory = parameters.getFactory();
 			
 			int cut = factory.lastIndexOf(".");
-			factory = factory.substring(0, cut + 1) + methodFactory.toLowerCase() + "Factory." 
+			factory = factory.substring(0, cut + 1) + methodFactory.toLowerCase() + "." 
 						+ methodFactory + factory.substring(cut + 1);
 			
 			return (T) Class.forName(factory).getConstructor().newInstance();

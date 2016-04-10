@@ -9,8 +9,8 @@ import persistent.abstractclass.ActivityCategory;
 import persistent.abstractclass.list.SetActivity;
 import persistent.factory.ActivityFactory;
 import persistent.factory.CategoryFactory;
-import persistent.factory.jdbcfactory.JDBCActivityFactory;
-import persistent.factory.jdbcfactory.JDBCCategoryFactory;
+import persistent.factory.jdbc.JDBCActivityFactory;
+import persistent.factory.jdbc.JDBCCategoryFactory;
 
 public class ActivityHandler {
 	private SetActivity activities = null;

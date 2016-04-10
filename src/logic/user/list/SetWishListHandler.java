@@ -9,7 +9,7 @@ import common.exception.dev.ErrorConnectionException;
 import persistent.abstractclass.list.SetWishList;
 import persistent.abstractclass.list.WishList;
 import persistent.factory.ListFactory;
-import persistent.factory.jdbcfactory.JDBCListFactory;
+import persistent.factory.jdbc.JDBCListFactory;
 
 /**
  * Handler for the SetWishListHandler (logic part)

@@ -7,7 +7,7 @@ import common.exception.dev.ErrorConnectionException;
 import persistent.abstractclass.Product;
 import persistent.abstractclass.list.SetProduct;
 import persistent.factory.ListFactory;
-import persistent.factory.jdbcfactory.JDBCListFactory;
+import persistent.factory.jdbc.JDBCListFactory;
 
 /**
  * Handler for the PDMShop (logic part)

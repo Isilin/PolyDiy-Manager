@@ -12,8 +12,8 @@ import persistent.abstractclass.Seller;
 import persistent.abstractclass.User;
 import persistent.factory.SellerProfilFactory;
 import persistent.factory.SessionFactory;
-import persistent.factory.jdbcfactory.JDBCSellerProfilFactory;
-import persistent.factory.jdbcfactory.JDBCSessionFactory;
+import persistent.factory.jdbc.JDBCSellerProfilFactory;
+import persistent.factory.jdbc.JDBCSessionFactory;
 
 public class AccountRegister {
 	private Account account = null;

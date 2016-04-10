@@ -10,8 +10,8 @@ import persistent.abstractclass.list.ProductWishList;
 import persistent.abstractclass.list.WishList;
 import persistent.factory.ListFactory;
 import persistent.factory.ProductFactory;
-import persistent.factory.jdbcfactory.JDBCListFactory;
-import persistent.factory.jdbcfactory.JDBCProductFactory;
+import persistent.factory.jdbc.JDBCListFactory;
+import persistent.factory.jdbc.JDBCProductFactory;
 
 /**
  * Handler for the ProductInShopHandler (logic part)

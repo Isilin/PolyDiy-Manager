@@ -59,7 +59,7 @@ public class JDBConnection {
 	 * @return JDBConnection
 	 * @throws AlertDriver 
 	 */
-	public static JDBConnection getInstance() throws ErrorConnectionException, AlertDriver {
+	public static JDBConnection getInstance() throws ErrorConnectionException {
 		if (JDBConnection.instance == null) {
 			ObjectMapper mapper = new ObjectMapper();
 			try {
@@ -68,6 +68,8 @@ public class JDBConnection {
 				JDBConnection.instance = new JDBConnection(parameters);
 			} catch (IOException e) {
 				e.printStackTrace();
+			} catch (AlertDriver e) {
+				System.err.println(e.getMessage());
 			}
 		}
 		return JDBConnection.instance;
@@ -95,11 +97,16 @@ public class JDBConnection {
 												ResultSet.HOLD_CURSORS_OVER_COMMIT);
 	}
 	
-	public static Boolean hasResult(Statement stmt) throws SQLException {
-		ResultSet result = stmt.getResultSet();
+	public static Boolean hasResult(Statement stmt) {
+		ResultSet result;
 		Boolean isResult = false;
-		if(result != null) {
-			isResult = result.first();
+		try {
+			result = stmt.getResultSet();
+			if(result != null) {
+				isResult = result.first();
+			}
+		} catch (SQLException e) {
+			System.err.println(e.getMessage());
 		}
 		return isResult;
 	}

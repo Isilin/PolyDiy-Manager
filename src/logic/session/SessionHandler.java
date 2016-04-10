@@ -4,7 +4,7 @@ import java.util.Arrays;
 
 import persistent.abstractclass.Session;
 import persistent.factory.SessionFactory;
-import persistent.factory.jdbcfactory.JDBCSessionFactory;
+import persistent.factory.jdbc.JDBCSessionFactory;
 
 public class SessionHandler {
 	public Session login(int ID) throws Exception {

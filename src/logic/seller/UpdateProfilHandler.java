@@ -10,7 +10,7 @@ import common.exception.dev.AlertDriver;
 import common.exception.dev.ErrorConnectionException;
 import persistent.abstractclass.Seller;
 import persistent.factory.SellerProfilFactory;
-import persistent.factory.jdbcfactory.JDBCSellerProfilFactory;
+import persistent.factory.jdbc.JDBCSellerProfilFactory;
 
 public class UpdateProfilHandler {
 
