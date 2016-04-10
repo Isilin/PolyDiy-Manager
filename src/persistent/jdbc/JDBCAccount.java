@@ -105,55 +105,6 @@ public class JDBCAccount extends Account {
 			throw new NotExistingTuple("Account");
 		}
 		stmt.close();
-		
-		stmt = this.connection.getPreparedStatement("SELECT id_user FROM User_account WHERE id_account=?");
-		stmt.setInt(1, this.ID);
-		stmt.execute();
-		if(JDBConnection.hasResult(stmt)) {
-			ResultSet result = stmt.getResultSet();
-			this.profilesID[USER] = result.getInt("id_user");
-		}
-		stmt.close();
-		
-		stmt = this.connection.getPreparedStatement("SELECT id_seller FROM Seller_account WHERE id_account=?");
-		stmt.setInt(1, this.ID);
-		stmt.execute();
-		if(JDBConnection.hasResult(stmt)) {
-			ResultSet result = stmt.getResultSet();
-			this.profilesID[SELLER] = result.getInt("id_seller");
-		}
-		stmt.close();
-		
-		stmt = this.connection.getPreparedStatement("SELECT id_admin FROM Admin_account WHERE id_account=?");
-		stmt.setInt(1, this.ID);
-		stmt.execute();
-		if(JDBConnection.hasResult(stmt)) {
-			ResultSet result = stmt.getResultSet();
-			this.profilesID[ADMIN] = result.getInt("id_admin");
-		}
-		stmt.close();
-		
-		stmt = this.connection.getPreparedStatement("SELECT id_comment FROM Comment WHERE id_account=?");
-		stmt.setInt(1, this.ID);
-		stmt.execute();
-		if(JDBConnection.hasResult(stmt)) {
-			ResultSet result = stmt.getResultSet();
-			do {
-				this.commentIDs.add(result.getInt("id_comment"));
-			} while(result.next());
-		}
-		stmt.close();
-		
-		stmt = this.connection.getPreparedStatement("SELECT id_tutorial FROM Tutorial WHERE id_account=?");
-		stmt.setInt(1, this.ID);
-		stmt.execute();
-		if(JDBConnection.hasResult(stmt)) {
-			ResultSet result = stmt.getResultSet();
-			do {
-				this.tutorialIDs.add(result.getInt("id_tutorial"));
-			} while(result.next());
-		}
-		stmt.close();
 	}
 
 	@Override

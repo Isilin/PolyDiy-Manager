@@ -8,8 +8,8 @@ import persistent.abstractclass.Product;
 import persistent.abstractclass.list.SetProduct;
 import persistent.factory.ListFactory;
 import persistent.factory.ProductFactory;
-import persistent.factory.jdbcFactory.JDBCListFactory;
-import persistent.factory.jdbcFactory.JDBCProductFactory;
+import persistent.factory.jdbcfactory.JDBCListFactory;
+import persistent.factory.jdbcfactory.JDBCProductFactory;
 
 public class ProductSellerHandler {
 	private Product product = null;

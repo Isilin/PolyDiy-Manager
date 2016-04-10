@@ -7,8 +7,8 @@ import persistent.abstractclass.Objective;
 import persistent.abstractclass.list.SetObjective;
 import persistent.factory.ActivityFactory;
 import persistent.factory.CategoryFactory;
-import persistent.factory.jdbcFactory.JDBCActivityFactory;
-import persistent.factory.jdbcFactory.JDBCCategoryFactory;
+import persistent.factory.jdbcfactory.JDBCActivityFactory;
+import persistent.factory.jdbcfactory.JDBCCategoryFactory;
 
 public class ObjectiveHandler {
 	private SetObjective objectives = null;

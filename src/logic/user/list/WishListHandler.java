@@ -11,8 +11,8 @@ import persistent.abstractclass.list.ProductWishList;
 import persistent.abstractclass.list.WishList;
 import persistent.factory.ListFactory;
 import persistent.factory.ProductFactory;
-import persistent.factory.jdbcFactory.JDBCListFactory;
-import persistent.factory.jdbcFactory.JDBCProductFactory;
+import persistent.factory.jdbcfactory.JDBCListFactory;
+import persistent.factory.jdbcfactory.JDBCProductFactory;
 
 /**
  * To handle user interactions with a wish list.

@@ -4,7 +4,7 @@ import logic.user.list.ProductInShopHandler;
 import persistent.abstractclass.Product;
 import persistent.abstractclass.list.Cart;
 import persistent.factory.ListFactory;
-import persistent.factory.jdbcFactory.JDBCListFactory;
+import persistent.factory.jdbcfactory.JDBCListFactory;
 
 public class FacadeProductInShop {
 	ProductInShopHandler productHandler = new ProductInShopHandler();

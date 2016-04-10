@@ -6,7 +6,7 @@ import common.exception.dev.AlertDriver;
 import common.exception.dev.ErrorConnectionException;
 import persistent.abstractclass.list.SetInfoWishList;
 import persistent.factory.ListFactory;
-import persistent.factory.jdbcFactory.JDBCListFactory;
+import persistent.factory.jdbcfactory.JDBCListFactory;
 
 /**Handler for the SetInfoWishListHandler (logic part)
  * @author loicd_000

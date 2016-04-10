@@ -10,6 +10,9 @@ import persistent.common.InterfaceModel;
  * @since 2016-04-02
  */
 public abstract class Account implements InterfaceModel {
+	public static final int FIRST = 0;
+	public static final int LAST = 0;
+	
 	protected String login = "";
 	protected String password = "";
 	protected int ID = -1;

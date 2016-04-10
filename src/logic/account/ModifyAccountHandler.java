@@ -2,7 +2,7 @@ package logic.account;
 
 import persistent.abstractclass.Account;
 import persistent.factory.SessionFactory;
-import persistent.factory.jdbcFactory.JDBCSessionFactory;
+import persistent.factory.jdbcfactory.JDBCSessionFactory;
 
 /**
  * 

@@ -11,8 +11,8 @@ import persistent.abstractclass.list.Cart;
 import persistent.abstractclass.list.ProductWishList;
 import persistent.factory.ListFactory;
 import persistent.factory.ProductFactory;
-import persistent.factory.jdbcFactory.JDBCListFactory;
-import persistent.factory.jdbcFactory.JDBCProductFactory;
+import persistent.factory.jdbcfactory.JDBCListFactory;
+import persistent.factory.jdbcfactory.JDBCProductFactory;
 
 /**
  * Handler for a Cart (logic)
