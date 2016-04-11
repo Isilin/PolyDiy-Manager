@@ -6,6 +6,7 @@ import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
 
+import common.Application;
 import graphic.engine.AbstractUI;
 import graphic.engine.UIMessage;
                                                        
@@ -23,8 +24,8 @@ public class AddProductUI extends AbstractUI{
 	 JButton cancel = new JButton();
 	 JButton addP = new JButton();
 	 
-	 public AddProductUI(UIMessage communication){
-		super(communication);
+	 public AddProductUI(UIMessage communication, Application app){
+		super(communication, app);
 			//this.nameShop.setPreferredSize(new Dimension(150, 30));
 		this.panel.setLayout(null);
 		label = new JLabel("Name of Product");
@@ -82,10 +83,14 @@ public class AddProductUI extends AbstractUI{
 			this.notifyObservers("seller");
 			}*/
 		if (arg0.getSource()== cancel){
-			this.setChanged();
-			this.notifyObservers("manage");
+			this.update("manage");
 			
 		}
+	}
+	@Override
+	public void update(String transition) {
+		// TODO Auto-generated method stub
+		
 	}
 	 
 

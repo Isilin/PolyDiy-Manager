@@ -6,6 +6,7 @@ import java.awt.event.ActionEvent;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 
+import common.Application;
 import graphic.engine.AbstractUI;
 import graphic.engine.UIMessage;
 import logic.facade.FacadeModifyAccount;
@@ -19,9 +20,9 @@ public class UpdateAccount_welcomeUI extends AbstractUI {
 	 * @throws Exception 
 	 */
 	
-	public UpdateAccount_welcomeUI(UIMessage communication) throws Exception {
+	public UpdateAccount_welcomeUI(UIMessage communication, Application app) throws Exception {
 		
-		super(communication);
+		super(communication, app);
 		this.panel.setLayout(null);
 		
 		//to take the actual account informations
@@ -109,10 +110,15 @@ public class UpdateAccount_welcomeUI extends AbstractUI {
 
 	@Override
 	public void actionPerformed(ActionEvent arg0) {		
-			if (arg0.getActionCommand().equals("update informations")) { 
-				this.setChanged();
-				this.notifyObservers("updateAccount");
+			if (arg0.getActionCommand().equals("update informations")) {
+				this.update("updateAccount");
 			}
+		
+	}
+
+	@Override
+	public void update(String transition) {
+		// TODO Auto-generated method stub
 		
 	}
 }

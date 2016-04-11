@@ -2,12 +2,10 @@ package logic.facade;
 
 import java.util.Set;
 
-import common.exception.UnknownIDProductException;
 import common.exception.dev.AlertDriver;
 import common.exception.dev.ErrorConnectionException;
 import logic.seller.ProductSellerHandler;
 import persistent.abstractclass.Product;
-import persistent.abstractclass.list.SetProduct;
 
 
 

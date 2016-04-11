@@ -10,6 +10,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 
+import common.Application;
 import graphic.engine.AbstractUI;
 import graphic.engine.UIMessage;
 import logic.facade.FacadeCreateAccount;
@@ -37,8 +38,8 @@ public class CreateAccountUI extends AbstractUI {
 	 * @param communication
 	 */
 
-	public CreateAccountUI(UIMessage communication) {
-		super(communication);
+	public CreateAccountUI(UIMessage communication, Application app) {
+		super(communication, app);
 		
 		this.panel.setLayout(null);
 		
@@ -98,6 +99,12 @@ public class CreateAccountUI extends AbstractUI {
 		} catch (Exception exception) {
 			JOptionPane.showMessageDialog(null, exception.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
 		}
+	}
+
+	@Override
+	public void update(String transition) {
+		// TODO Auto-generated method stub
+		
 	}
 
 }

@@ -13,6 +13,7 @@ import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.border.Border;
 
+import common.Application;
 import graphic.engine.AbstractUI;
 import graphic.engine.UIMessage;
 import logic.facade.list.FacadeSetInfoWishList;
@@ -48,8 +49,8 @@ public class ProductInShopUI extends AbstractUI {
 	 * Constructor of the view of a ProductInShop
 	 * @param communication
 	 */
-	public ProductInShopUI(UIMessage communication) {
-		super(communication);
+	public ProductInShopUI(UIMessage communication, Application app) {
+		super(communication, app);
 
 		int IDProduct = (int) this.communication.getElement("id_product");
 		int IDUser = (int) this.communication.getElement("id_user");
@@ -204,6 +205,12 @@ public class ProductInShopUI extends AbstractUI {
 			result = "Available";
 		}
 		return result;
+	}
+
+	@Override
+	public void update(String transition) {
+		// TODO Auto-generated method stub
+		
 	}
 
 }

@@ -8,6 +8,7 @@ import javax.swing.JButton;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
+import common.Application;
 import graphic.engine.AbstractUI;
 import graphic.engine.UIMessage;
 import logic.facade.FacadeActivityPanel;
@@ -18,12 +19,11 @@ public class ModifyActivityUI  extends AbstractUI{
 	private JButton delete = new JButton("Delete");
 	private JTextArea description = new JTextArea();
 	private JTextField category = new JTextField();
-	private JTextField deadline = new JTextField();
 	
 	private FacadeActivityPanel facade = new FacadeActivityPanel();
 
-	public ModifyActivityUI(UIMessage communication) throws Exception {
-		super(communication);
+	public ModifyActivityUI(UIMessage communication, Application app) throws Exception {
+		super(communication, app);
 		
 		this.panel.setLayout(null);
 		
@@ -51,33 +51,32 @@ public class ModifyActivityUI  extends AbstractUI{
 		this.category.setBounds(320, 30, 150, 23);
 		this.category.setText(facade.getActivityCategory().getLabel());
 		this.panel.add(category);
-		
-		this.deadline.setBounds(320, 60, 150, 23);
-		this.deadline.setText(facade.getActivity().getDeadline());
-		this.panel.add(deadline);
 	}
 	
 	@Override
 	public void actionPerformed(ActionEvent arg0) {
 		if(arg0.getActionCommand().equals("Update")) {
 			try {
-				this.facade.updateActivity(this.title.getText(), this.description.getText(), this.deadline.getText(),
-										this.facade.getActivityCategory().getIdActivityCategory(), 
+				this.facade.updateActivity(this.title.getText(), this.description.getText(), this.facade.getActivityCategory().getID(), 
 										(int)this.communication.getElement("id_user"));
-				this.setChanged();
-				this.notifyObservers("activityPanel");
+				this.update("activityPanel");
 			} catch (Exception e1) {
 				e1.printStackTrace();
 			}
 		} else if(arg0.getActionCommand().equals("Delete")) {
 			try {
 				this.facade.deleteActivity();
-				this.setChanged();
-				this.notifyObservers("activityPanel");
+				this.update("activityPanel");
 			} catch (Exception e1) {
 				e1.printStackTrace();
 			}
 		}
+	}
+
+	@Override
+	public void update(String transition) {
+		// TODO Auto-generated method stub
+		
 	}
 
 }

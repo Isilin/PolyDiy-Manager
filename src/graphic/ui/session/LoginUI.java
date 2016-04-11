@@ -12,10 +12,15 @@ import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 
 import common.Application;
+import common.exception.dev.ErrorConnectionException;
+import common.exception.dev.UnknowFactory;
 import graphic.engine.AbstractUI;
 import graphic.engine.UIMessage;
 import logic.facade.FacadeSession;
+import persistent.abstractclass.Account;
 import persistent.abstractclass.Session;
+import persistent.common.GlobalFactory;
+import persistent.factory.AccountFactory;
 
 /**
  * This panel is the UI for the login.
@@ -34,8 +39,6 @@ public class LoginUI extends AbstractUI{
 	private JLabel passwordLabel = new JLabel("Password :");
 	private JPasswordField password = new JPasswordField();
 	private JLabel lblWelcome = new JLabel();
-	
-	private Session session = null;
 	
 	public LoginUI(UIMessage communication, Application app) {
 		super(communication, app);
@@ -73,33 +76,36 @@ public class LoginUI extends AbstractUI{
 	 */
 	@Override
 	public void actionPerformed(ActionEvent arg0) {
-		if(arg0.getActionCommand().equals("Connect")) {
+		if(arg0.getSource() == this.connection) {
 			FacadeSession facade = new FacadeSession();
+			
+			AccountFactory factory = null;
+			Account account = null;
 			try {
-				this.session = facade.login(this.login.getText(), String.valueOf(this.password.getPassword()));
-				if(this.session != null) {
-					this.communication.shareElement("id_account", this.session.getID());
-					this.communication.shareElement("login", this.session.getLogin());
-					if(this.session.getIDUser() != -1) {
-						this.communication.shareElement("id_user", this.session.getIDUser());
-					}
-					if(this.session.getIDSeller() != -1) {
-						this.communication.shareElement("id_seller", this.session.getIDSeller());
-					}
-					if(this.session.getIDAdmin() != -1) {
-						this.communication.shareElement("id_admin", this.session.getIDAdmin());
-					}
+				factory = GlobalFactory.<AccountFactory>buildFactory(AccountFactory.class);
+				account = factory.buildEmptyAccount();
+			} catch (UnknowFactory e) {
+				System.err.println(e.getMessage());
+			} catch (ErrorConnectionException e) {
+				JOptionPane.showMessageDialog(null, e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+			}
+			
+			if(account != null) {
+				account.setLogin(this.login.getText());
+				account.setPassword(String.valueOf(this.password.getPassword()));
+			}
+			
+			Session session = null;
+			try {
+				session = facade.login(account);
+				if(session != null) {
+					this.communication.shareElement("id_account", session.getID());
 					this.update("login");
 				}
 			} catch (Exception e) {
 				JOptionPane.showMessageDialog(null, e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
-				this.session = null;
 			}
 		}
-	}
-	
-	public Boolean isConnected() {
-		return this.session != null;
 	}
 	
 	@Override
@@ -108,7 +114,7 @@ public class LoginUI extends AbstractUI{
 		case "login":
 			this.app.clearUI();
 			this.app.addUI("navBar", BorderLayout.NORTH, this.communication);
-			//this.addUI("account_welcome", BorderLayout.CENTER);
+			this.app.addUI("account_welcome", BorderLayout.CENTER, this.communication);
 			break;
 		default:
 			break;

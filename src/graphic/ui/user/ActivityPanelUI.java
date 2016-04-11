@@ -12,6 +12,8 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 
+import common.Application;
+import common.exception.dev.NotFoundParameter;
 import graphic.dataTable.DataModelSetWishList;
 import graphic.engine.AbstractUI;
 import graphic.engine.UIMessage;
@@ -31,8 +33,8 @@ public class ActivityPanelUI extends AbstractUI{
 	private JTable objectives = new JTable();
 	private JPanel objectivesPanel = new JPanel();
 
-	public ActivityPanelUI(UIMessage communication) {
-		super(communication);
+	public ActivityPanelUI(UIMessage communication, Application app) throws NotFoundParameter {
+		super(communication, app);
 		
 		this.panel.setLayout(null);
 
@@ -68,7 +70,7 @@ public class ActivityPanelUI extends AbstractUI{
 		Collection<Activity> activitiesObj = facade.getActivities();
 		for (Activity element : activitiesObj) {
 			dataActivity[jActivity][0] = element.getTitle();
-			dataActivity[jActivity][1] = element.getIdActivity();
+			dataActivity[jActivity][1] = element.getID();
 			jActivity++;
 		}
 
@@ -107,7 +109,7 @@ public class ActivityPanelUI extends AbstractUI{
 		Collection<Task> tasksObj = facade.getTasks();
 		for (Task element : tasksObj) {
 			dataTasks[jTasks][0] = element.getTitle();
-			dataTasks[jTasks][1] = element.getIdActivity();
+			dataTasks[jTasks][1] = element.getID();
 			jTasks++;
 		}
 
@@ -146,7 +148,7 @@ public class ActivityPanelUI extends AbstractUI{
 		Collection<Objective> objectivesObj = facade.getObjectives();
 		for (Objective element : objectivesObj) {
 			dataObjectives[jObjectives][0] = element.getTitle();
-			dataObjectives[jObjectives][1] = element.getIdObjective();
+			dataObjectives[jObjectives][1] = element.getID();
 			jObjectives++;
 		}
 
@@ -177,34 +179,34 @@ public class ActivityPanelUI extends AbstractUI{
 		switch(arg0.getActionCommand()) {
 		case "+ Activity":
 			communication.shareElement("id_activity", -1);
-			this.setChanged();
-			this.notifyObservers("modifyActivity");
+			this.update("modifyActivity");
 			break;
 		case "+ Task":
 			communication.shareElement("id_task", -1);
-			this.setChanged();
-			this.notifyObservers("modifyTask");
+			this.update("modifyTask");
 			break;
 		case "+ Objective":
 			communication.shareElement("id_objective", -1);
-			this.setChanged();
-			this.notifyObservers("modifyObjective");
+			this.update("modifyObjective");
 			break;
 		case "activity":
-			this.setChanged();
-			this.notifyObservers("modifyActivity");
+			this.update("modifyActivity");
 			break;
 		case "task":
-			this.setChanged();
-			this.notifyObservers("modifyTask");
+			this.update("modifyTask");
 			break;
 		case "objective":
-			this.setChanged();
-			this.notifyObservers("modifyObjective");
+			this.update("modifyObjective");
 			break;
 		default:
 			break;
 		}
+	}
+
+	@Override
+	public void update(String transition) {
+		// TODO Auto-generated method stub
+		
 	}
 
 }

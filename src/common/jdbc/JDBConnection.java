@@ -24,8 +24,8 @@ import common.parameter.ConnectionParameter;
  * @since 2016-03-02
  */ 
 public class JDBConnection {
-	private Connection connection;
-	static JDBConnection instance;
+	private Connection connection = null;
+	private static JDBConnection instance;
 	
 	/**
 	 * @param user

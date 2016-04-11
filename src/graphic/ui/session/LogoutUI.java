@@ -6,6 +6,7 @@ import javax.swing.JButton;
 import javax.swing.JOptionPane;
 import javax.swing.UIManager;
 
+import common.Application;
 import graphic.engine.AbstractUI;
 import graphic.engine.UIMessage;
 import logic.facade.FacadeSession;
@@ -14,8 +15,8 @@ public class LogoutUI extends AbstractUI {
 	private JButton logout = new JButton();
 	private JButton user = new JButton();	
 	
-	public LogoutUI(UIMessage communication) {
-		super(communication);
+	public LogoutUI(UIMessage communication, Application app) {
+		super(communication, app);
 		
 		this.panel.setLayout(null);
 		//modify the background colors
@@ -40,8 +41,7 @@ public class LogoutUI extends AbstractUI {
 		
 		if (arg0.getActionCommand().equals("User")) {
 			try {
-				this.setChanged();
-				this.notifyObservers("user");
+				this.update("user");
 			} catch (Exception e) {
 				JOptionPane.showMessageDialog(null, e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
 			}
@@ -51,12 +51,17 @@ public class LogoutUI extends AbstractUI {
 		else if (arg0.getActionCommand().equals("Logout")) {
 			try {
 				facade.logout((int)this.communication.getElement("id_account"));
-				this.setChanged();
-				this.notifyObservers("logout");
+				this.update("logout");
 			} catch (Exception e) {
 				JOptionPane.showMessageDialog(null, e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
 			}
 		}
+	}
+
+	@Override
+	public void update(String transition) {
+		// TODO Auto-generated method stub
+		
 	}
 
 }

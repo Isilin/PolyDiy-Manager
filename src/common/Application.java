@@ -222,6 +222,6 @@ public class Application extends JFrame{
 	
 	public void init() {
 		this.addUI("login", BorderLayout.NORTH, new UIMessage());
-		//this.addUI("createAccount", BorderLayout.CENTER);
+		this.addUI("createAccount", BorderLayout.CENTER, new UIMessage());
 	}
 }

@@ -14,11 +14,11 @@ import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.table.TableModel;
 
+import common.Application;
 import graphic.dataTable.DataModelSetWishList;
 import graphic.engine.AbstractUI;
 import graphic.engine.UIMessage;
 import logic.facade.list.FacadeManageWishList;
-import persistent.abstractclass.list.ProductWishList;
 
 /**
  * this is the view for a wishList
@@ -37,8 +37,8 @@ public class WishListUI extends AbstractUI {
 	private FacadeManageWishList facadeList = new FacadeManageWishList(); 
 
 	
-	public WishListUI(UIMessage communication) {
-		super(communication);
+	public WishListUI(UIMessage communication, Application app) {
+		super(communication, app);
 		int IDWishList = (int)this.communication.getElement("id_wishlist");
 		this.facadeList.createAndGetWishList(IDWishList);
 		
@@ -120,8 +120,7 @@ public class WishListUI extends AbstractUI {
 		}
 		try {
 			this.communication.shareElement("id_wishlist", this.facadeList.getIDWishList());
-			this.setChanged();
-			this.notifyObservers("wishList");
+			this.update("wishList");
 		} catch (Exception e) {
 			JOptionPane.showMessageDialog(null, e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
 		}
@@ -135,8 +134,7 @@ public class WishListUI extends AbstractUI {
 		if (arg0.getActionCommand().equals("Back to User")) {
 			//System.out.println("UserUI - actionPerformed - case user");
 			try {
-				this.setChanged();
-				this.notifyObservers("user");
+				this.update("user");
 			} catch (Exception e) {
 				JOptionPane.showMessageDialog(null, e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
 			}
@@ -145,14 +143,20 @@ public class WishListUI extends AbstractUI {
 		
 		else if (arg0.getActionCommand().equals("Back to WishLists")) {
 			try {
-				this.setChanged();
-				this.notifyObservers("wishLists");
+				this.update("wishLists");
 			} catch (Exception e) {
 				JOptionPane.showMessageDialog(null, e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
 			}
 		} else {
 			System.err.println("Button action not catch.");
 		}
+	}
+
+
+	@Override
+	public void update(String transition) {
+		// TODO Auto-generated method stub
+		
 	}
 
 }

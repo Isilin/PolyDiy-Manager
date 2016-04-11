@@ -7,6 +7,7 @@ import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
 
+import common.Application;
 import graphic.engine.AbstractUI;
 import graphic.engine.UIMessage;
 import logic.facade.FacadeModifyAccount;
@@ -34,9 +35,9 @@ public class UpdateAccountUI extends AbstractUI {
 	 * and your address.
 	 */
 	
-	public UpdateAccountUI(UIMessage communication) throws Exception {
+	public UpdateAccountUI(UIMessage communication, Application app) throws Exception {
 
-		super(communication);
+		super(communication, app);
 		this.panel.setLayout(null);
 		
 		
@@ -142,9 +143,8 @@ public class UpdateAccountUI extends AbstractUI {
 	public void actionPerformed(ActionEvent arg0) {
 		FacadeModifyAccount facade = new FacadeModifyAccount();
 		
-		if (arg0.getActionCommand().equals("Cancel")) { 
-			this.setChanged();
-			this.notifyObservers("account");
+		if (arg0.getActionCommand().equals("Cancel")) {
+			this.update("account");
 			
 		} else if (arg0.getActionCommand().equals("Validate")) {
 			int ID = (int) this.communication.getElement("id_account");
@@ -160,9 +160,15 @@ public class UpdateAccountUI extends AbstractUI {
 			} catch (Exception e) {
 				System.out.println("Le updateAccout exécuté dans l'UI n'a pas pu aboutir");
 			}
-			this.setChanged(); 
-			this.notifyObservers("account");
+			this.update("account");
 		}
 	} //end Override
+
+
+	@Override
+	public void update(String transition) {
+		// TODO Auto-generated method stub
+		
+	}
 
 }

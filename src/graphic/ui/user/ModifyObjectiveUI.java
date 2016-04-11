@@ -8,6 +8,7 @@ import javax.swing.JButton;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
+import common.Application;
 import graphic.engine.AbstractUI;
 import graphic.engine.UIMessage;
 import logic.facade.FacadeActivityPanel;
@@ -22,8 +23,8 @@ public class ModifyObjectiveUI extends AbstractUI {
 	
 	private FacadeActivityPanel facade = new FacadeActivityPanel();
 
-	public ModifyObjectiveUI(UIMessage communication) throws Exception {
-		super(communication);
+	public ModifyObjectiveUI(UIMessage communication, Application app) throws Exception {
+		super(communication, app);
 		
 		this.panel.setLayout(null);
 		
@@ -53,7 +54,7 @@ public class ModifyObjectiveUI extends AbstractUI {
 		this.panel.add(category);
 
 		this.deadline.setBounds(320, 60, 150, 23);
-		this.deadline.setText(facade.getObjective().getDeadline());
+		this.deadline.setText(facade.getObjective().getDeadline().toString());
 		this.panel.add(deadline);
 	}
 
@@ -63,20 +64,24 @@ public class ModifyObjectiveUI extends AbstractUI {
 			try {
 				this.facade.updateObjective(this.title.getText(),this.description.getText(), this.deadline.getText(),
 											this.category.getText(), (int)this.communication.getElement("id_user"));
-				this.setChanged();
-				this.notifyObservers("activityPanel");
+				this.update("activityPanel");
 			} catch (Exception e1) {
 				e1.printStackTrace();
 			}
 		} else if(e.getActionCommand().equals("Delete")) {
 			try {
 				this.facade.deleteObjective();
-				this.setChanged();
-				this.notifyObservers("activityPanel");
+				this.update("activityPanel");
 			} catch (Exception e1) {
 				e1.printStackTrace();
 			}
 		}
+	}
+
+	@Override
+	public void update(String transition) {
+		// TODO Auto-generated method stub
+		
 	}
 
 }

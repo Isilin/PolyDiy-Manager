@@ -5,6 +5,7 @@ import java.awt.event.ActionEvent;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 
+import common.Application;
 import graphic.engine.AbstractUI;
 import graphic.engine.UIMessage;
 
@@ -22,8 +23,8 @@ public class AccountUI extends AbstractUI {
 	 * constructor of the view, need a 
 	 * @param communication
 	 */
-	public AccountUI(UIMessage communication) {
-		super(communication);
+	public AccountUI(UIMessage communication, Application app) {
+		super(communication, app);
 		
 		this.panel.setLayout(null);
 
@@ -51,8 +52,7 @@ public class AccountUI extends AbstractUI {
 		// we have an action, so we notify observers.
 		if (!action.equals("")) {
 			try {
-				this.setChanged();
-				this.notifyObservers(action);
+				this.update(action);
 			} catch (Exception e) {
 				JOptionPane.showMessageDialog(null, e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
 			}
@@ -60,6 +60,12 @@ public class AccountUI extends AbstractUI {
 		else {
 			System.err.println("Button action not catch.");
 		}
+	}
+
+	@Override
+	public void update(String transition) {
+		// TODO Auto-generated method stub
+		
 	}
 
 }

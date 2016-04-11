@@ -17,6 +17,7 @@ import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.table.TableModel;
 
+import common.Application;
 import graphic.dataTable.DataModelSetWishList;
 import graphic.engine.AbstractUI;
 import graphic.engine.UIMessage;
@@ -25,12 +26,13 @@ import persistent.abstractclass.Product;
 
 public class ManageShopUI extends AbstractUI {
 	
-		private JButton add;
-		private JTable table;
-		private JPanel tablePanel;
-		private FacadeProduct facade =  new FacadeProduct((int)this.communication.getElement("id_seller"));
-	public ManageShopUI(UIMessage communication) {
-		super(communication);
+	private JButton add;
+	private JTable table;
+	private JPanel tablePanel;
+	private FacadeProduct facade =  new FacadeProduct((int)this.communication.getElement("id_seller"));
+		
+	public ManageShopUI(UIMessage communication, Application app) {
+		super(communication, app);
 		 table = new JTable();
 		 tablePanel = new JPanel();
 		 this.facade.createAndGetExistingSetProduct((int)this.communication.getElement("id_seller"));		
@@ -82,12 +84,16 @@ public class ManageShopUI extends AbstractUI {
 	public void actionPerformed(ActionEvent arg0) {
 		if (arg0.getActionCommand()== "Add New Product") {
 			try {
-				this.setChanged();
-				this.notifyObservers("addProduct");
+				this.update("addProduct");
 			} catch (Exception e) {
 				JOptionPane.showMessageDialog(null, e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
 			}
 	}
 
+	}
+	@Override
+	public void update(String transition) {
+		// TODO Auto-generated method stub
+		
 	}
 }

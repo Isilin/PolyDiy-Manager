@@ -11,6 +11,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 
+import common.Application;
 import graphic.engine.AbstractUI;
 import graphic.engine.UIMessage;
 
@@ -20,8 +21,8 @@ public class UserUI extends AbstractUI {
 	private JButton activity = new JButton();
     private JPanel journalPanel = new JPanel(); 
 	
-	public UserUI(UIMessage communication) {
-		super(communication);
+	public UserUI(UIMessage communication, Application app) {
+		super(communication, app);
 		
 		this.panel.setLayout(null);
 
@@ -76,8 +77,7 @@ public class UserUI extends AbstractUI {
 		// now if there are a change of UI, we notifyObservers
 		if (!result.equals("")) {
 			try {
-				this.setChanged();
-				this.notifyObservers(result);
+				this.update(result);
 			} catch (Exception e) {
 				e.printStackTrace();
 				JOptionPane.showMessageDialog(null, e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
@@ -89,5 +89,11 @@ public class UserUI extends AbstractUI {
 			System.err.println("Button action not catch.");
 		}
 
+	}
+
+	@Override
+	public void update(String transition) {
+		// TODO Auto-generated method stub
+		
 	}
 }

@@ -12,7 +12,7 @@ import javax.swing.JOptionPane;
  * @since 2016-03-21
  */
 
-import common.exception.UnknownIDSellerException;
+import common.Application;
 import common.exception.dev.AlertDriver;
 import common.exception.dev.ErrorConnectionException;
 import graphic.engine.AbstractUI;
@@ -28,8 +28,8 @@ public class SellerUI extends AbstractUI {
 	private JButton edit = new JButton();
 	private JButton manage = new JButton();
 	
-	public SellerUI(UIMessage communication) throws UnknownIDSellerException, ErrorConnectionException, AlertDriver {
-		super(communication);
+	public SellerUI(UIMessage communication, Application app) throws ErrorConnectionException, AlertDriver {
+		super(communication, app);
 		facade = new FacadeEditProfil((int)this.communication.getElement("id_account"));
 		this.panel.setLayout(null);
 		//edit Profil Button
@@ -71,8 +71,7 @@ public class SellerUI extends AbstractUI {
 		// edit Profil
 		if (arg0.getSource()== edit) {
 			try {
-				this.notifyObservers("edit");
-				this.setChanged();
+				this.update("edit");
 			} catch (Exception e) {
 				JOptionPane.showMessageDialog(null, e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
 			}
@@ -80,8 +79,7 @@ public class SellerUI extends AbstractUI {
 		//manage Shop
 		if (arg0.getActionCommand()== "Manage Shop") {
 			try {
-				this.setChanged();
-				this.notifyObservers("manage");
+				this.update("manage");
 			} catch (Exception e) {
 				JOptionPane.showMessageDialog(null, e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
 			}
@@ -96,8 +94,7 @@ public class SellerUI extends AbstractUI {
 		// we have an action, so we notify observers.
 		if (!action.equals("")) {
 			try {
-				this.setChanged();
-				this.notifyObservers(action);
+				this.update(action);
 			} catch (Exception e) {
 				JOptionPane.showMessageDialog(null, e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
 			}
@@ -105,5 +102,11 @@ public class SellerUI extends AbstractUI {
 		else {
 			System.err.println("Button action not catch.");
 		}
+	}
+
+	@Override
+	public void update(String transition) {
+		// TODO Auto-generated method stub
+		
 	}
 }

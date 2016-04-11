@@ -1,8 +1,10 @@
 package logic.facade;
 
-import common.exception.ErrorPasswordException;
+import common.exception.dev.NotFoundParameter;
+import common.exception.user.ErrorPasswordException;
 import logic.session.LoginChecker;
 import logic.session.SessionHandler;
+import persistent.abstractclass.Account;
 import persistent.abstractclass.Session;
 
 /**
@@ -28,12 +30,14 @@ public class FacadeSession {
 	 * @param String
 	 *            : password
 	 * @return String : the token of the connection is returned.
+	 * @throws Exception 
+	 * @throws NotFoundParameter 
 	 */
-	public Session login(String login, String password) throws Exception {
+	public Session login(Account account) throws Exception {
 		Session session = null;
 		LoginChecker checker = new LoginChecker();
-		checker.generateAccount(login);
-		if (checker.isValidPassword(password)) {
+		checker.generateAccount(account.getLogin());
+		if (checker.isValidPassword(account.getPassword())) {
 			SessionHandler handler = new SessionHandler();
 			session = handler.login(checker.getAccount().getID());
 		} else {

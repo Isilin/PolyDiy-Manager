@@ -5,6 +5,7 @@ import java.awt.event.ActionEvent;
 import javax.swing.JButton;
 import javax.swing.JTextField;
 
+import common.Application;
 import graphic.engine.AbstractUI;
 import graphic.engine.UIMessage;
 import logic.facade.FacadeActivityPanel;
@@ -17,8 +18,8 @@ public class ModifyTaskUI extends AbstractUI {
 	
 	private FacadeActivityPanel facade = new FacadeActivityPanel();
 
-	public ModifyTaskUI(UIMessage communication) throws Exception {
-		super(communication);
+	public ModifyTaskUI(UIMessage communication, Application app) throws Exception {
+		super(communication, app);
 		
 		this.panel.setLayout(null);
 
@@ -49,20 +50,24 @@ public class ModifyTaskUI extends AbstractUI {
 		if(arg0.getActionCommand().equals("Update")) {
 			try {
 				this.facade.updateTask(this.title.getText(), this.category.getText(), (int)this.communication.getElement("id_user"));
-				this.setChanged();
-				this.notifyObservers("activityPanel");
+				this.update("activityPanel");
 			} catch (Exception e1) {
 				e1.printStackTrace();
 			}
 		} else if(arg0.getActionCommand().equals("Delete")) {
 			try {
 				this.facade.deleteTask();
-				this.setChanged();
-				this.notifyObservers("activityPanel");
+				this.update("activityPanel");
 			} catch (Exception e1) {
 				e1.printStackTrace();
 			}
 		}
+	}
+
+	@Override
+	public void update(String transition) {
+		// TODO Auto-generated method stub
+		
 	}
 
 }

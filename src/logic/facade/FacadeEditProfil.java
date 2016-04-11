@@ -1,5 +1,4 @@
 package logic.facade;
-import common.exception.UnknownIDSellerException;
 import common.exception.dev.AlertDriver;
 import common.exception.dev.ErrorConnectionException;
 import logic.seller.UpdateProfilHandler;
@@ -24,7 +23,7 @@ public class FacadeEditProfil {
 	 * @param ID( which is idaccount) - nameShop - description - siret-website
 	 */
 	
-	public void createSeller(int ID, String nameShop, String description, String siret, String website) throws ErrorConnectionException, AlertDriver, UnknownIDSellerException {
+	public void createSeller(int ID, String nameShop, String description, String siret, String website) throws ErrorConnectionException, AlertDriver {
 
 		this.handler.createSeller(IDaccount, nameShop, description, siret, website);
 
@@ -38,7 +37,7 @@ public class FacadeEditProfil {
 	 * @since 2016-03-21
 	 * return nameShop
 	 */
-	public String getNameShop() throws UnknownIDSellerException, ErrorConnectionException, AlertDriver{
+	public String getNameShop() throws ErrorConnectionException, AlertDriver{
 
 		this.handler.getSellerWithId(IDaccount);
 		return this.handler.getNameShop();		}
@@ -48,7 +47,7 @@ public class FacadeEditProfil {
 	 * @since 2016-03-21
 	 * @param name
 	 */
-	public void SetNameShop(String name) throws ErrorConnectionException, UnknownIDSellerException, AlertDriver{
+	public void SetNameShop(String name) throws ErrorConnectionException, AlertDriver{
 		this.handler.getSellerWithId(IDaccount);
 		this.handler.setNameShop(name);     
 	}
@@ -60,7 +59,7 @@ public class FacadeEditProfil {
 	 * @since 2016-03-21
 	 * return siret
 	 */
-	public String getSiret() throws UnknownIDSellerException, ErrorConnectionException, AlertDriver {
+	public String getSiret() throws ErrorConnectionException, AlertDriver {
 		this.handler.getSellerWithId(IDaccount);
 		return this.handler.getSiret();
 	}	
@@ -70,7 +69,7 @@ public class FacadeEditProfil {
 	 * @since 2016-03-21
 	 * @param siret
 	 */
-	public void SetSiert(String siret) throws ErrorConnectionException, UnknownIDSellerException, AlertDriver{
+	public void SetSiert(String siret) throws ErrorConnectionException, AlertDriver{
 		this.handler.getSellerWithId(IDaccount);
 		this.handler.setSiert(siret);
 	}
@@ -80,7 +79,7 @@ public class FacadeEditProfil {
 	 * @since 2016-03-21
 	 * return Website
 	 */
-	public String getWebsite() throws UnknownIDSellerException, ErrorConnectionException, AlertDriver {
+	public String getWebsite() throws ErrorConnectionException, AlertDriver {
 		this.handler.getSellerWithId(IDaccount);
 		return this.handler.getWebsite();
 	}
@@ -93,7 +92,7 @@ public class FacadeEditProfil {
 	 *
 	 */
 	
-	public void setWebsite(String site) throws UnknownIDSellerException, ErrorConnectionException, AlertDriver {
+	public void setWebsite(String site) throws ErrorConnectionException, AlertDriver {
 		this.handler.getSellerWithId(IDaccount);
 		this.handler.settWebsite(site);
 	}
@@ -103,7 +102,7 @@ public class FacadeEditProfil {
 	 * @since 2016-03-21
 	 * return Description
 	 */
-	public String getDescription () throws ErrorConnectionException, UnknownIDSellerException, AlertDriver{
+	public String getDescription () throws ErrorConnectionException, AlertDriver{
 		this.handler.getSellerWithId(IDaccount);
 		return this.handler.getDescription();
 	}
@@ -113,7 +112,7 @@ public class FacadeEditProfil {
 	 * @since 2016-03-21
 	 * 
 	 */
-	public void setDescription(String desc) throws UnknownIDSellerException, ErrorConnectionException, AlertDriver {
+	public void setDescription(String desc) throws ErrorConnectionException, AlertDriver {
 		this.handler.getSellerWithId(IDaccount);    
 		this.handler.setDescription(desc);
 	}

@@ -14,6 +14,7 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 
+import common.Application;
 import graphic.engine.AbstractUI;
 import graphic.engine.UIMessage;
 import logic.facade.FacadeEditProfil;
@@ -30,8 +31,8 @@ public class UpdateSellerUI extends AbstractUI {
 		 JButton cancel = new JButton();
 		 JButton update = new JButton();
 	
-	public UpdateSellerUI(UIMessage communication) {
-		super(communication);
+	public UpdateSellerUI(UIMessage communication, Application app) {
+		super(communication, app);
 			//this.nameShop.setPreferredSize(new Dimension(150, 30));
 		this.panel.setLayout(null);
 		label = new JLabel("Name of Shop");
@@ -80,19 +81,24 @@ public class UpdateSellerUI extends AbstractUI {
 		FacadeEditProfil facade = new FacadeEditProfil((int)this.communication.getElement("id_account"));
 		try {
 			if (arg0.getSource()==update){
-			facade.createSeller((int)this.communication.getElement("id_account"), this.nameShop.getText(), this.description.getText(), this.siret.getText(), this.website.getText());
-			facade.Validate();
-			this.setChanged();
-			this.notifyObservers("seller");
+				facade.createSeller((int)this.communication.getElement("id_account"), this.nameShop.getText(), 
+									this.description.getText(), this.siret.getText(), this.website.getText());
+				facade.Validate();
+				this.update("seller");
 			}
 			if (arg0.getSource()== cancel){
-				this.setChanged();
-				this.notifyObservers("seller");
+				this.update("seller");
 				
 			}
 		} catch (Exception e) {
 			JOptionPane.showMessageDialog(null, e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
 		}
+		
+	}
+
+	@Override
+	public void update(String transition) {
+		// TODO Auto-generated method stub
 		
 	}
 

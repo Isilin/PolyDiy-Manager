@@ -14,11 +14,11 @@ import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.table.TableModel;
 
+import common.Application;
 import graphic.dataTable.DataModelSetWishList;
 import graphic.engine.AbstractUI;
 import graphic.engine.UIMessage;
 import logic.facade.list.FacadeManageCart;
-import persistent.abstractclass.list.ProductWishList;
 
 /**
  * This view is used to display the cart.
@@ -41,8 +41,8 @@ public class CartUI extends AbstractUI {
 	/**
 	 * @param communication
 	 */
-	public CartUI(UIMessage communication) {
-		super(communication);
+	public CartUI(UIMessage communication, Application app) {
+		super(communication, app);
 		this.facadeList.createAndGetCart((int)this.communication.getElement("id_user"));
 		
 		this.panel.setLayout(null);
@@ -128,8 +128,7 @@ public class CartUI extends AbstractUI {
 			e1.printStackTrace();
 		}
 		try {
-			this.setChanged();
-			this.notifyObservers("cart");
+			this.update("cart");
 		} catch (Exception e) {
 			JOptionPane.showMessageDialog(null, e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
 		}
@@ -146,8 +145,7 @@ public class CartUI extends AbstractUI {
 	 */
 	public void stringActionPerformed(String event) {
 		try {
-			this.setChanged();
-			this.notifyObservers(event);
+			this.update(event);
 		} catch (Exception e) {
 			JOptionPane.showMessageDialog(null, e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
 		}
@@ -159,8 +157,7 @@ public class CartUI extends AbstractUI {
 		
 		if (arg0.getActionCommand().equals("Back to User")) {
 			try {
-				this.setChanged();
-				this.notifyObservers("user");
+				this.update("user");
 			} catch (Exception e) {
 				JOptionPane.showMessageDialog(null, e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
 			}
@@ -168,8 +165,7 @@ public class CartUI extends AbstractUI {
 		
 		else if (arg0.getActionCommand().equals("Wish Lists")) {
 			try {
-				this.setChanged();
-				this.notifyObservers("wishLists");
+				this.update("wishLists");
 			} catch (Exception e) {
 				JOptionPane.showMessageDialog(null, e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
 			}
@@ -178,14 +174,20 @@ public class CartUI extends AbstractUI {
 		
 		else if (arg0.getActionCommand().equals("Cart")) {
 			try {
-				this.setChanged();
-				this.notifyObservers("cart");
+				this.update("cart");
 			} catch (Exception e) {
 				JOptionPane.showMessageDialog(null, e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
 			}
 		}  else {
 			System.err.println("Button action not catch.");
 		}
+	}
+
+
+	@Override
+	public void update(String transition) {
+		// TODO Auto-generated method stub
+		
 	}
 
 }

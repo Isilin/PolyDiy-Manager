@@ -16,6 +16,7 @@ import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.table.TableModel;
 
+import common.Application;
 import graphic.dataTable.DataModelSetWishList;
 import graphic.engine.AbstractUI;
 import graphic.engine.UIMessage;
@@ -44,8 +45,8 @@ public class PDMShopUI extends AbstractUI {
 
 	private FacadePDMShop facadeList = new FacadePDMShop();
 
-	public PDMShopUI(UIMessage communication) {
-		super(communication);
+	public PDMShopUI(UIMessage communication, Application app) {
+		super(communication, app);
 
 		this.facadeList.createAndGetExistingSetProduct();
 
@@ -101,7 +102,7 @@ public class PDMShopUI extends AbstractUI {
 			String key = i.next();
 			Product product = this.facadeList.createAndGetExistingSetProduct().getElementByKey(key);
 			Object[] newLine = { product.getName(), "" + product.getUnitPrice() + " €",
-					inStock(product.getStockQuantity()), product.getIDProduct() };
+					inStock(product.getStockQuantity()), product.getID() };
 			data[j] = newLine;
 			j++;
 		}
@@ -144,8 +145,7 @@ public class PDMShopUI extends AbstractUI {
 	public void stringActionPerformed(int event) {
 		this.communication.shareElement("id_product", event);
 		try {
-			this.setChanged();
-			this.notifyObservers("productInShop");
+			this.update("productInShop");
 		} catch (Exception e) {
 			JOptionPane.showMessageDialog(null, e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
 		}
@@ -168,8 +168,7 @@ public class PDMShopUI extends AbstractUI {
 			// nothing to do
 		} else if (!result.equals("")) {
 			try {
-				this.setChanged();
-				this.notifyObservers(result);
+				this.update(result);
 			} catch (Exception e) {
 				JOptionPane.showMessageDialog(null, e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
 			}
@@ -187,6 +186,12 @@ public class PDMShopUI extends AbstractUI {
 			result = "in stock";
 		}
 		return result;
+	}
+
+	@Override
+	public void update(String transition) {
+		// TODO Auto-generated method stub
+		
 	}
 
 }
